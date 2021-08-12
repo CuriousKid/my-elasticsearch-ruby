@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "elasticsearch/api"
@@ -10,30 +10,32 @@ Dir[ File.expand_path('../xpack/api/actions/**/params_registry.rb', __FILE__) ].
 Dir[ File.expand_path('../xpack/api/actions/**/*.rb', __FILE__) ].each   { |f| require f }
 Dir[ File.expand_path('../xpack/api/namespace/**/*.rb', __FILE__) ].each { |f| require f }
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       def self.included(base)
-        Elasticsearch::XPack::API.constants.reject {|c| c == :Client }.each do |m|
-          base.__send__ :include, Elasticsearch::XPack::API.const_get(m)
+        ElasticsearchV7::XPack::API.constants.reject {|c| c == :Client }.each do |m|
+          base.__send__ :include, ElasticsearchV7::XPack::API.const_get(m)
         end
       end
 
       class Client
-        include Elasticsearch::API::Common::Client, Elasticsearch::API::Common::Client::Base
-        include Elasticsearch::XPack::API
+        byebug
+        include ElasticsearchV7::API::Common::Client, ElasticsearchV7::API::Common::Client::Base
+        include ElasticsearchV7::XPack::API
       end
     end
   end
 end
 
-Elasticsearch::API::COMMON_PARAMS.push :job_id, :datafeed_id, :filter_id, :snapshot_id, :category_id, :policy_id
+ElasticsearchV7::API::COMMON_PARAMS.push :job_id, :datafeed_id, :filter_id, :snapshot_id, :category_id, :policy_id
 
-module Elasticsearch
+module ElasticsearchV7
   module Transport
     class Client
+      byebug
       def xpack
-        @xpack_client ||= Elasticsearch::XPack::API::Client.new(self)
+        @xpack_client ||= ElasticsearchV7::XPack::API::Client.new(self)
       end
 
       def security
@@ -77,4 +79,4 @@ module Elasticsearch
       end
     end
   end
-end if defined?(Elasticsearch::Transport::Client)
+end if defined?(ElasticsearchV7::Transport::Client)

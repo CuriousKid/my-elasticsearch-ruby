@@ -1,17 +1,18 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'base64'
 
-module Elasticsearch
+module ElasticsearchV7
   module Transport
 
-    # Handles communication with an Elasticsearch cluster.
+    # Handles communication with an ElasticsearchV7 cluster.
     #
     # See {file:README.md README} for usage and code examples.
     #
     class Client
+      byebug
       DEFAULT_TRANSPORT_CLASS  = Transport::HTTP::Faraday
 
       DEFAULT_LOGGER = lambda do
@@ -42,12 +43,12 @@ module Elasticsearch
 
       # Returns the transport object.
       #
-      # @see Elasticsearch::Transport::Transport::Base
-      # @see Elasticsearch::Transport::Transport::HTTP::Faraday
+      # @see ElasticsearchV7::Transport::Transport::Base
+      # @see ElasticsearchV7::Transport::Transport::HTTP::Faraday
       #
       attr_accessor :transport
 
-      # Create a client connected to an Elasticsearch cluster.
+      # Create a client connected to an ElasticsearchV7 cluster.
       #
       # Specify the URL via arguments or set the `ELASTICSEARCH_URL` environment variable.
       #
@@ -91,7 +92,7 @@ module Elasticsearch
       #                                               the transport and passed the transport instance
       #
       # @option arguments [Constant] :selector An instance of selector strategy implemented with
-      #                                        {Elasticsearch::Transport::Transport::Connections::Selector::Base}.
+      #                                        {ElasticsearchV7::Transport::Transport::Connections::Selector::Base}.
       #
       # @option arguments [String] :send_get_body_as Specify the HTTP method to use for GET requests with a body.
       #                                              (Default: GET)
@@ -102,6 +103,7 @@ module Elasticsearch
       # @yield [faraday] Access and configure the `Faraday::Connection` instance directly with a block
       #
       def initialize(arguments={}, &block)
+        byebug
         @options = arguments.each_with_object({}){ |(k,v), args| args[k.to_sym] = v }
         @arguments = @options
         @arguments[:logger] ||= @arguments[:log]   ? DEFAULT_LOGGER.call() : nil
@@ -170,7 +172,7 @@ module Elasticsearch
       # Arrayifies the `hosts_config` argument and extracts `host` and `port` info from strings.
       # Performs shuffling when the `randomize_hosts` option is set.
       #
-      # TODO: Refactor, so it's available in Elasticsearch::Transport::Base as well
+      # TODO: Refactor, so it's available in ElasticsearchV7::Transport::Base as well
       #
       # @return [Array<Hash>]
       # @raise  [ArgumentError]
