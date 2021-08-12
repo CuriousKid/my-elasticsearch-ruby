@@ -8,7 +8,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'elasticsearch/api/version'
 
 Gem::Specification.new do |s|
-  s.name          = "elasticsearch-api"
+  s.name          = "elasticsearch-api-v7"
   s.version       = Elasticsearch::API::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
