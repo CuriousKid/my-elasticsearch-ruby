@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # coding: utf-8
@@ -9,10 +9,10 @@ require 'elasticsearch/dsl/version'
 
 Gem::Specification.new do |s|
   s.name          = "elasticsearch-dsl"
-  s.version       = Elasticsearch::DSL::VERSION
+  s.version       = ElasticsearchV7::DSL::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.com"]
-  s.description   = %q{A Ruby DSL builder for Elasticsearch}
+  s.description   = %q{A Ruby DSL builder for ElasticsearchV7}
   s.summary       = s.description
   s.homepage      = "https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-dsl"
   s.license       = "Apache-2.0"

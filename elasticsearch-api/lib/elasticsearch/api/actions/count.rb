@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # Returns number of documents matching a query.
@@ -45,9 +45,9 @@ module Elasticsearch
         _type = arguments.delete(:type)
 
         method = if arguments[:body]
-                   Elasticsearch::API::HTTP_POST
+                   ElasticsearchV7::API::HTTP_POST
                  else
-                   Elasticsearch::API::HTTP_GET
+                   ElasticsearchV7::API::HTTP_GET
 end
 
         path = if _index && _type

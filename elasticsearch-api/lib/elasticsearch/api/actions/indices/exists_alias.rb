@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Indices
       module Actions
@@ -29,7 +29,7 @@ module Elasticsearch
 
           _index = arguments.delete(:index)
 
-          method = Elasticsearch::API::HTTP_HEAD
+          method = ElasticsearchV7::API::HTTP_HEAD
           path   = if _index && _name
                      "#{Utils.__listify(_index)}/_alias/#{Utils.__listify(_name)}"
                    else

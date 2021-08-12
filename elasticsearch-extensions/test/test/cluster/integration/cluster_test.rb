@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
@@ -7,7 +7,7 @@ require 'pathname'
 
 require 'elasticsearch/extensions/test/cluster'
 
-class Elasticsearch::Extensions::TestClusterIntegrationTest < Elasticsearch::Test::IntegrationTestCase
+class ElasticsearchV7::Extensions::TestClusterIntegrationTest < ElasticsearchV7::Test::IntegrationTestCase
   context "The Test::Cluster" do
     PATH_TO_BUILDS = if ENV['PATH_TO_BUILDS']
       Pathname(ENV['PATH_TO_BUILDS'])
@@ -32,17 +32,17 @@ class Elasticsearch::Extensions::TestClusterIntegrationTest < Elasticsearch::Tes
       should "start and stop #{build.to_s}" do
         puts ("----- #{build.to_s} " + "-"*(80-7-build.to_s.size)).to_s.ansi(:bold)
         begin
-          Elasticsearch::Extensions::Test::Cluster.start \
+          ElasticsearchV7::Extensions::Test::Cluster.start \
             command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s,
             port: 9260,
             cluster_name: 'elasticsearch-ext-integration-test',
             path_data: '/tmp/elasticsearch-ext-integration-test'
 
           # Index some data to create the data directory
-          client = Elasticsearch::Client.new host: "localhost:9260"
+          client = ElasticsearchV7::Client.new host: "localhost:9260"
           client.index index: 'test1', type: 'd', id: 1, body: { title: 'TEST' }
         ensure
-          Elasticsearch::Extensions::Test::Cluster.stop \
+          ElasticsearchV7::Extensions::Test::Cluster.stop \
             command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s,
             port: 9260,
             cluster_name: 'elasticsearch-ext-integration-test'

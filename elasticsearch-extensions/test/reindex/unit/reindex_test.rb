@@ -1,34 +1,34 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 require 'elasticsearch/extensions/reindex'
 
-class Elasticsearch::Extensions::ReindexTest < Elasticsearch::Test::UnitTestCase
+class ElasticsearchV7::Extensions::ReindexTest < ElasticsearchV7::Test::UnitTestCase
   context "The Reindex extension module" do
     DEFAULT_OPTIONS = { source: { index: 'foo', client: Object.new }, target: { index: 'bar' } }
 
     should "require options" do
       assert_raise ArgumentError do
-        Elasticsearch::Extensions::Reindex.new
+        ElasticsearchV7::Extensions::Reindex.new
       end
     end
 
     should "allow to initialize the class" do
-      assert_instance_of Elasticsearch::Extensions::Reindex::Reindex,
-                         Elasticsearch::Extensions::Reindex.new(DEFAULT_OPTIONS)
+      assert_instance_of ElasticsearchV7::Extensions::Reindex::Reindex,
+                         ElasticsearchV7::Extensions::Reindex.new(DEFAULT_OPTIONS)
     end
 
     should "add the reindex to the API and client" do
-      assert_includes Elasticsearch::API::Actions.public_instance_methods.sort, :reindex
-      assert_respond_to Elasticsearch::Client.new, :reindex
+      assert_includes ElasticsearchV7::API::Actions.public_instance_methods.sort, :reindex
+      assert_respond_to ElasticsearchV7::Client.new, :reindex
     end
 
     should "pass the client when used in API mode" do
-      client = Elasticsearch::Client.new
+      client = ElasticsearchV7::Client.new
 
-      Elasticsearch::Extensions::Reindex::Reindex
+      ElasticsearchV7::Extensions::Reindex::Reindex
         .expects(:new)
         .with({source: { client: client }})
         .returns(stub perform: {})
@@ -53,8 +53,8 @@ class Elasticsearch::Extensions::ReindexTest < Elasticsearch::Test::UnitTestCase
 
       should "scroll through the index and save batches in bulk" do
         client  = mock()
-        subject = Elasticsearch::Extensions::Reindex.new source: { index: 'foo', client: client },
-                                                         target: { index: 'bar' }
+        subject = ElasticsearchV7::Extensions::Reindex.new source: {index: 'foo', client: client },
+                                                           target: { index: 'bar' }
 
         client.expects(:search)
           .returns({ '_scroll_id' => 'scroll_id_1' }.merge(Marshal.load(Marshal.dump(@default_response))))
@@ -73,8 +73,8 @@ class Elasticsearch::Extensions::ReindexTest < Elasticsearch::Test::UnitTestCase
 
       should "return the number of errors" do
         client  = mock()
-        subject = Elasticsearch::Extensions::Reindex.new source: { index: 'foo', client: client },
-                                                         target: { index: 'bar' }
+        subject = ElasticsearchV7::Extensions::Reindex.new source: {index: 'foo', client: client },
+                                                           target: { index: 'bar' }
 
         client.expects(:search).returns({ '_scroll_id' => 'scroll_id_1' }.merge(@default_response))
         client.expects(:scroll).returns(@empty_response)
@@ -87,7 +87,7 @@ class Elasticsearch::Extensions::ReindexTest < Elasticsearch::Test::UnitTestCase
 
       should "transform the documents with a lambda" do
         client  = mock()
-        subject = Elasticsearch::Extensions::Reindex.new \
+        subject = ElasticsearchV7::Extensions::Reindex.new \
           source: { index: 'foo', client: client },
           target: { index: 'bar' },
           transform: lambda { |d| d['_source']['foo'].upcase!; d }

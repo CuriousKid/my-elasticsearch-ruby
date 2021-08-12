@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module Transport
     module Transport
 
@@ -21,7 +21,7 @@ module Elasticsearch
           @timeout   = transport.options[:sniffer_timeout] || 1
         end
 
-        # Retrieves the node list from the Elasticsearch's
+        # Retrieves the node list from the ElasticsearchV7's
         # [_Nodes Info API_](https://www.elastic.co/guide/reference/api/admin-cluster-nodes-info/)
         # and returns a normalized Array of information suitable for passing to transport.
         #

@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module Benchmarking
 
     # Class encapsulating formatting and indexing the results from a benchmarking run.
@@ -22,7 +22,7 @@ module Elasticsearch
       # @example Create a results object.
       #   Benchmarking::Results.new(task, [...], options)
       #
-      # @param [ Elasticsearch::Benchmarking ] task The task that executed the benchmarking run.
+      # @param [ ElasticsearchV7::Benchmarking ] task The task that executed the benchmarking run.
       # @param [ Array<Fixnum> ] results An array of the results.
       # @param [ Hash ] options The options.
       #
@@ -38,7 +38,7 @@ module Elasticsearch
       # @example Index the results.
       #   results.index!(client)
       #
-      # @param [ Elasticsearch::Client ] client The client to use to index the results.
+      # @param [ ElasticsearchV7::Client ] client The client to use to index the results.
       #
       # @return [ Hash ] The results document.
       #
@@ -76,8 +76,8 @@ module Elasticsearch
 
       CLIENT_NAME = 'elasticsearch-ruby-client'.freeze
 
-      COMPLEXITIES = { Elasticsearch::Benchmarking::Simple => :simple,
-                       Elasticsearch::Benchmarking::Complex => :complex }.freeze
+      COMPLEXITIES = {ElasticsearchV7::Benchmarking::Simple => :simple,
+                      ElasticsearchV7::Benchmarking::Complex => :complex }.freeze
 
       def action_iterations
         options[:action_iterations]
@@ -175,7 +175,7 @@ module Elasticsearch
       end
 
       def agent_doc
-        { version: Elasticsearch::VERSION,
+        { version: ElasticsearchV7::VERSION,
           name: CLIENT_NAME,
           git: git_doc,
           language: language_doc,

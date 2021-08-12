@@ -4,7 +4,7 @@
 
 # encoding: utf-8
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
     module ANSI
 

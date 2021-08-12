@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
 
     # Generic utility methods
@@ -68,13 +68,13 @@ module Elasticsearch
           squeeze('/')
       end
 
-      # Convert an array of payloads into Elasticsearch `header\ndata` format
+      # Convert an array of payloads into ElasticsearchV7 `header\ndata` format
       #
       # Supports various different formats of the payload: Array of Strings, Header/Data pairs,
       # or the conveniency "combined" format where data is passed along with the header
       # in a single item.
       #
-      #     Elasticsearch::API::Utils.__bulkify [
+      #     ElasticsearchV7::API::Utils.__bulkify [
       #       { :index =>  { :_index => 'myindexA', :_type => 'mytype', :_id => '1', :data => { :title => 'Test' } } },
       #       { :update => { :_index => 'myindexB', :_type => 'mytype', :_id => '2', :data => { :doc => { :title => 'Update' } } } }
       #     ]
@@ -101,7 +101,7 @@ module Elasticsearch
               sum << data if data
               sum
             end.
-            map { |item| Elasticsearch::API.serializer.dump(item) }
+            map { |item| ElasticsearchV7::API.serializer.dump(item) }
           payload << '' unless payload.empty?
 
         # Array of strings
@@ -110,7 +110,7 @@ module Elasticsearch
 
         # Header/Data pairs
         else
-          payload = payload.map { |item| Elasticsearch::API.serializer.dump(item) }
+          payload = payload.map { |item| ElasticsearchV7::API.serializer.dump(item) }
           payload << ''
         end
 
@@ -138,14 +138,14 @@ module Elasticsearch
       #   # => { :foo => "q", :bam => "m" }
       #
       # @example Skip validating parameters when the module setting is set
-      #   Elasticsearch::API.settings[:skip_parameter_validation] = true
+      #   ElasticsearchV7::API.settings[:skip_parameter_validation] = true
       #   __validate_and_extract_params( { :foo => 'q', :bam => 'm' }, [:foo, :bar] )
       #   # => { :foo => "q", :bam => "m" }
       #
       # @api private
       #
       def __validate_and_extract_params(arguments, params=[], options={})
-        if options[:skip_parameter_validation] || Elasticsearch::API.settings[:skip_parameter_validation]
+        if options[:skip_parameter_validation] || ElasticsearchV7::API.settings[:skip_parameter_validation]
           arguments
         else
           __validate_params(arguments, params)
@@ -229,7 +229,7 @@ module Elasticsearch
           explanation = if param.is_a?(Hash)
             ". #{param.values.first[:explanation]}."
           else
-            ". This parameter is not supported in the version you're using: #{Elasticsearch::API::VERSION}, and will be removed in the next release."
+            ". This parameter is not supported in the version you're using: #{ElasticsearchV7::API::VERSION}, and will be removed in the next release."
           end
 
           message = "[!] You are using unsupported parameter [:#{name}]"
@@ -260,7 +260,7 @@ module Elasticsearch
           message += " in `#{source}`"
         end
 
-        message += ". This method is not supported in the version you're using: #{Elasticsearch::API::VERSION}, and will be removed in the next release. Suppress this warning by the `-WO` command line flag."
+        message += ". This method is not supported in the version you're using: #{ElasticsearchV7::API::VERSION}, and will be removed in the next release. Suppress this warning by the `-WO` command line flag."
 
         if STDERR.tty?
           Kernel.warn "\e[31;1m#{message}\e[0m"

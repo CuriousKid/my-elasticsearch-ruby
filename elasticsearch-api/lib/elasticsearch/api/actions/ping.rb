@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # Returns whether the cluster is running.
@@ -14,7 +14,7 @@ module Elasticsearch
       def ping(arguments = {})
         arguments = arguments.clone
 
-        method = Elasticsearch::API::HTTP_HEAD
+        method = ElasticsearchV7::API::HTTP_HEAD
         path   = ""
         params = {}
 

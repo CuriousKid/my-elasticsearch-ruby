@@ -1,26 +1,26 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 require 'elasticsearch/extensions/ansi'
 
-class Elasticsearch::Extensions::AnsiTest < Elasticsearch::Test::UnitTestCase
+class ElasticsearchV7::Extensions::AnsiTest < ElasticsearchV7::Test::UnitTestCase
   context "The ANSI extension" do
     setup do
-      @client = Elasticsearch::Client.new
+      @client = ElasticsearchV7::Client.new
       @client.stubs(:perform_request).returns \
-        Elasticsearch::Transport::Transport::Response.new(200, { "ok" => true, "status" => 200, "name" => "Hit-Maker",
-                                                                 "version" => { "number"     => "0.90.7",
+        ElasticsearchV7::Transport::Transport::Response.new(200, {"ok" => true, "status" => 200, "name" => "Hit-Maker",
+                                                                  "version" => { "number"     => "0.90.7",
                                                                                 "build_hash" => "abc123",
                                                                                 "build_timestamp"=>"2013-11-13T12:06:54Z", "build_snapshot"=>false, "lucene_version"=>"4.5.1" },
-                                                                 "tagline"=>"You Know, for Search" })
+                                                                  "tagline"=>"You Know, for Search" })
     end
 
     should "wrap the response" do
       response = @client.info
 
-      assert_instance_of Elasticsearch::Extensions::ANSI::ResponseBody, response
+      assert_instance_of ElasticsearchV7::Extensions::ANSI::ResponseBody, response
       assert_instance_of Hash, response.to_hash
     end
 
@@ -33,7 +33,7 @@ class Elasticsearch::Extensions::AnsiTest < Elasticsearch::Test::UnitTestCase
 
     should "call the 'awesome_inspect' method when available and no handler found" do
       @client.stubs(:perform_request).returns \
-        Elasticsearch::Transport::Transport::Response.new(200, {"index-1"=>{"aliases"=>{}}})
+        ElasticsearchV7::Transport::Transport::Response.new(200, {"index-1"=>{"aliases"=>{}}})
       response = @client.cat.aliases
 
       response.instance_eval do
@@ -44,7 +44,7 @@ class Elasticsearch::Extensions::AnsiTest < Elasticsearch::Test::UnitTestCase
 
     should "call `to_s` method when no pretty printer or handler found" do
       @client.stubs(:perform_request).returns \
-        Elasticsearch::Transport::Transport::Response.new(200, {"index-1"=>{"aliases"=>{}}})
+        ElasticsearchV7::Transport::Transport::Response.new(200, {"index-1"=>{"aliases"=>{}}})
       response = @client.cat.aliases
 
       assert_equal '{"index-1"=>{"aliases"=>{}}}', response.to_ansi

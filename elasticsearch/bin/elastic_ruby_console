@@ -23,8 +23,8 @@ unless gems_not_loaded.empty?
   warn "The following gems were not loaded: [#{gems_not_loaded.join(', ')}]. Please install and require them explicitly."
 end
 
-include Elasticsearch
-include Elasticsearch::DSL if defined?(Elasticsearch::DSL)
+include ElasticsearchV7
+include ElasticsearchV7::DSL if defined?(ElasticsearchV7::DSL)
 
 begin
   require 'pry'

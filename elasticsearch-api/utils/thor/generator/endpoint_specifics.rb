@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     # Handles specific exceptional parameters and code snippets that need to be
     # included in the generated code. This module is included in SourceGenerator
@@ -117,11 +117,11 @@ module Elasticsearch
                 sum << data
                 sum
               end.
-              map { |item| Elasticsearch::API.serializer.dump(item) }
+              map { |item| ElasticsearchV7::API.serializer.dump(item) }
             payload << "" unless payload.empty?
             payload = payload.join("\n")
           when body.is_a?(Array)
-            payload = body.map { |d| d.is_a?(String) ? d : Elasticsearch::API.serializer.dump(d) }
+            payload = body.map { |d| d.is_a?(String) ? d : ElasticsearchV7::API.serializer.dump(d) }
             payload << "" unless payload.empty?
             payload = payload.join("\n")
           else
@@ -134,7 +134,7 @@ module Elasticsearch
         <<~SRC
           case
           when body.is_a?(Array)
-            payload = body.map { |d| d.is_a?(String) ? d : Elasticsearch::API.serializer.dump(d) }
+            payload = body.map { |d| d.is_a?(String) ? d : ElasticsearchV7::API.serializer.dump(d) }
             payload << "" unless payload.empty?
             payload = payload.join("\n")
           else

@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::DSL::Search::Filters::Bool do
+describe ElasticsearchV7::DSL::Search::Filters::Bool do
 
   let(:search) do
     described_class.new
@@ -22,7 +22,7 @@ describe Elasticsearch::DSL::Search::Filters::Bool do
     context 'when an object instance is provided' do
 
       let(:search) do
-        described_class.new.must( Elasticsearch::DSL::Search::Filters::Term.new foo: 'bar')
+        described_class.new.must(ElasticsearchV7::DSL::Search::Filters::Term.new foo: 'bar')
       end
 
       it 'applies the condition' do
@@ -33,9 +33,9 @@ describe Elasticsearch::DSL::Search::Filters::Bool do
 
         let(:search) do
           described_class.new do
-            must(Elasticsearch::DSL::Search::Filters::Term.new foo: 'bar')
-            must_not(Elasticsearch::DSL::Search::Filters::Term.new moo: 'bam')
-            should(Elasticsearch::DSL::Search::Filters::Term.new xoo: 'bax')
+            must(ElasticsearchV7::DSL::Search::Filters::Term.new foo: 'bar')
+            must_not(ElasticsearchV7::DSL::Search::Filters::Term.new moo: 'bam')
+            should(ElasticsearchV7::DSL::Search::Filters::Term.new xoo: 'bax')
           end
         end
 
@@ -52,11 +52,11 @@ describe Elasticsearch::DSL::Search::Filters::Bool do
 
         let(:search) do
           described_class.new do
-            must(Elasticsearch::DSL::Search::Filters::Term.new foo: 'bar')
-            must(Elasticsearch::DSL::Search::Filters::Term.new moo: 'bam')
+            must(ElasticsearchV7::DSL::Search::Filters::Term.new foo: 'bar')
+            must(ElasticsearchV7::DSL::Search::Filters::Term.new moo: 'bam')
 
-            should(Elasticsearch::DSL::Search::Filters::Term.new xoo: 'bax')
-            should(Elasticsearch::DSL::Search::Filters::Term.new zoo: 'baz')
+            should(ElasticsearchV7::DSL::Search::Filters::Term.new xoo: 'bax')
+            should(ElasticsearchV7::DSL::Search::Filters::Term.new zoo: 'baz')
           end
         end
 

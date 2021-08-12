@@ -1,32 +1,32 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::ProfilingTest
+class ElasticsearchV7::Transport::ClientProfilingTest < ElasticsearchV7::Test::ProfilingTest
   startup do
-    Elasticsearch::Extensions::Test::Cluster.start if ENV['SERVER'] and not Elasticsearch::Extensions::Test::Cluster.running?
+    ElasticsearchV7::Extensions::Test::Cluster.start if ENV['SERVER'] and not ElasticsearchV7::Extensions::Test::Cluster.running?
   end
 
-  context "Elasticsearch client benchmark" do
+  context "ElasticsearchV7 client benchmark" do
     setup do
       @port = (ENV['TEST_CLUSTER_PORT'] || 9250).to_i
-      client = Elasticsearch::Client.new host: "localhost:#{@port}", adapter: ::Faraday.default_adapter
+      client = ElasticsearchV7::Client.new host: "localhost:#{@port}", adapter: ::Faraday.default_adapter
       client.perform_request 'DELETE', 'ruby_test_benchmark' rescue nil
       client.perform_request 'PUT',   'ruby_test_benchmark', {}, {settings: {index: {number_of_shards: 1, number_of_replicas: 0}}}
       100.times do client.perform_request 'POST',   'ruby_test_benchmark_search/test', {}, {foo: 'bar'}; end
       client.perform_request 'POST',   'ruby_test_benchmark_search/_refresh'
     end
     teardown do
-      client = Elasticsearch::Client.new host: "localhost:#{@port}"
+      client = ElasticsearchV7::Client.new host: "localhost:#{@port}"
       client.perform_request 'DELETE', 'ruby_test_benchmark' rescue nil
       client.perform_request 'DELETE', 'ruby_test_benchmark_search' rescue nil
     end
 
     context "with a single-node cluster and the default adapter" do
       setup do
-        @client = Elasticsearch::Client.new hosts: "localhost:#{@port}", adapter: ::Faraday.default_adapter
+        @client = ElasticsearchV7::Client.new hosts: "localhost:#{@port}", adapter: ::Faraday.default_adapter
       end
 
       measure "get the cluster info", count: 1_000 do
@@ -44,7 +44,7 @@ class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::Profi
 
     context "with a two-node cluster and the default adapter" do
       setup do
-        @client = Elasticsearch::Client.new hosts: ["localhost:#{@port}", "localhost:#{@port+1}"], adapter: ::Faraday.default_adapter
+        @client = ElasticsearchV7::Client.new hosts: ["localhost:#{@port}", "localhost:#{@port+1}"], adapter: ::Faraday.default_adapter
       end
 
       measure "get the cluster info", count: 1_000 do
@@ -64,8 +64,8 @@ class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::Profi
       setup do
         require 'curb'
         require 'elasticsearch/transport/transport/http/curb'
-        @client = Elasticsearch::Client.new host: "localhost:#{@port}",
-                                            transport_class: Elasticsearch::Transport::Transport::HTTP::Curb
+        @client = ElasticsearchV7::Client.new host: "localhost:#{@port}",
+                                              transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb
       end
 
       measure "get the cluster info", count: 1_000 do
@@ -85,7 +85,7 @@ class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::Profi
       setup do
         require 'typhoeus'
         require 'typhoeus/adapters/faraday'
-        @client = Elasticsearch::Client.new host: "localhost:#{@port}", adapter: :typhoeus
+        @client = ElasticsearchV7::Client.new host: "localhost:#{@port}", adapter: :typhoeus
       end
 
       measure "get the cluster info", count: 1_000 do
@@ -104,7 +104,7 @@ class Elasticsearch::Transport::ClientProfilingTest < Elasticsearch::Test::Profi
     context "with a single-node cluster and the Patron adapter" do
       setup do
         require 'patron'
-        @client = Elasticsearch::Client.new host: "localhost:#{@port}", adapter: :patron
+        @client = ElasticsearchV7::Client.new host: "localhost:#{@port}", adapter: :patron
       end
 
       measure "get the cluster info", count: 1_000 do

@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # Example of listening to a RabbitMQ queue and indexing the payload
@@ -25,7 +25,7 @@ channel  = connection.create_channel
 queue    = channel.queue 'examples.elasticsearch', auto_delete: true
 exchange = channel.default_exchange
 
-elasticsearch = Elasticsearch::Client.new log:true
+elasticsearch = ElasticsearchV7::Client.new log:true
 
 elasticsearch.indices.delete index: 'rabbit' rescue nil
 

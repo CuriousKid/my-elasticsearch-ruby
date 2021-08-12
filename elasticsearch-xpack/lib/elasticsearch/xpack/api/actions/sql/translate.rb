@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module SQL
@@ -11,14 +11,14 @@ module Elasticsearch
 
           # @option arguments [Hash] :body Specify the query in the `query` element. (*Required*)
           #
-          # @see Translate SQL into Elasticsearch queries
+          # @see Translate SQL into ElasticsearchV7 queries
           #
           def translate(arguments = {})
             raise ArgumentError, "Required argument 'body' missing" unless arguments[:body]
 
             arguments = arguments.clone
 
-            method = Elasticsearch::API::HTTP_POST
+            method = ElasticsearchV7::API::HTTP_POST
             path   = "_sql/translate"
             params = {}
 

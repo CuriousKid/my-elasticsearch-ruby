@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # coding: utf-8
@@ -9,12 +9,12 @@ require 'elasticsearch/xpack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "elasticsearch-xpack"
-  spec.version       = Elasticsearch::XPack::VERSION
+  spec.version       = ElasticsearchV7::XPack::VERSION
   spec.authors       = ["Karel Minarik"]
   spec.email         = ["karel@elastic.co"]
 
-  spec.summary       = "Ruby integrations for the X-Pack extensions for Elasticsearch"
-  spec.description   = "Ruby integrations for the X-Pack extensions for Elasticsearch"
+  spec.summary       = "Ruby integrations for the X-Pack extensions for ElasticsearchV7"
+  spec.description   = "Ruby integrations for the X-Pack extensions for ElasticsearchV7"
   spec.homepage      = "https://github.com/elastic/elasticsearch-xpack-ruby"
   spec.license       = "Apache-2.0"
 

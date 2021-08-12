@@ -1,13 +1,13 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::API::Utils do
+describe ElasticsearchV7::API::Utils do
 
   let(:utils) do
-    Class.new { include Elasticsearch::API::Utils }.new
+    Class.new { include ElasticsearchV7::API::Utils }.new
   end
 
   describe '#__escape' do
@@ -266,10 +266,10 @@ describe Elasticsearch::API::Utils do
     context 'when the module has the setting to skip parameter validation' do
 
       around do |example|
-        original_value = Elasticsearch::API.settings[:skip_parameter_validation]
-        Elasticsearch::API.settings[:skip_parameter_validation] = true
+        original_value = ElasticsearchV7::API.settings[:skip_parameter_validation]
+        ElasticsearchV7::API.settings[:skip_parameter_validation] = true
         example.run
-        Elasticsearch::API.settings[:skip_parameter_validation] = original_value
+        ElasticsearchV7::API.settings[:skip_parameter_validation] = original_value
       end
 
       let(:result) do

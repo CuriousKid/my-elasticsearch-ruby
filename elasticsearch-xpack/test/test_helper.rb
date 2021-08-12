@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
@@ -31,11 +31,11 @@ module Minitest
   end
 end
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
     class FakeClient
       def xpack
-        @xpack_client ||= Elasticsearch::XPack::API::Client.new(self)
+        @xpack_client ||= ElasticsearchV7::XPack::API::Client.new(self)
       end
 
       def perform_request(method, path, params, body)

@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Indices
       module Actions
@@ -30,7 +30,7 @@ module Elasticsearch
 
           _new_index = arguments.delete(:new_index)
 
-          method = Elasticsearch::API::HTTP_POST
+          method = ElasticsearchV7::API::HTTP_POST
           path   = if _alias && _new_index
                      "#{Utils.__listify(_alias)}/_rollover/#{Utils.__listify(_new_index)}"
                    else

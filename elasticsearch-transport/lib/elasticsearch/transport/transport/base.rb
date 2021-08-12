@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module Transport
     module Transport
 
@@ -227,7 +227,7 @@ module Elasticsearch
           url
         end
 
-        # Performs a request to Elasticsearch, while handling logging, tracing, marking dead connections,
+        # Performs a request to ElasticsearchV7, while handling logging, tracing, marking dead connections,
         # retrying the request and reloading the connections.
         #
         # @abstract The transport implementation has to implement this method either in full,
@@ -278,7 +278,7 @@ module Elasticsearch
             # Raise an exception so we can catch it for `retry_on_status`
             __raise_transport_error(response) if response.status.to_i >= 300 && @retry_on_status.include?(response.status.to_i)
 
-          rescue Elasticsearch::Transport::Transport::ServerError => e
+          rescue ElasticsearchV7::Transport::Transport::ServerError => e
             if response && @retry_on_status.include?(response.status)
               log_warn "[#{e.class}] Attempt #{tries} to get response from #{url}"
               if tries <= (max_retries || DEFAULT_MAX_RETRIES)

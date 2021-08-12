@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module DataFrameTransformDeprecated
@@ -30,9 +30,9 @@ module Elasticsearch
 
             _transform_id = arguments.delete(:transform_id)
 
-            method = Elasticsearch::API::HTTP_POST
-            path   = "_data_frame/transforms/#{Elasticsearch::API::Utils.__listify(_transform_id)}/_update"
-            params = Elasticsearch::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
+            method = ElasticsearchV7::API::HTTP_POST
+            path   = "_data_frame/transforms/#{ElasticsearchV7::API::Utils.__listify(_transform_id)}/_update"
+            params = ElasticsearchV7::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
 
             body = arguments[:body]
             perform_request(method, path, params, body).body

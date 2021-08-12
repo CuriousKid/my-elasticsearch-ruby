@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
@@ -68,7 +68,7 @@ describe 'client.indices#exists_alias' do
   context 'when a \'not found\' exception is raised' do
 
     let(:client) do
-      Class.new { include Elasticsearch::API }.new.tap do |_client|
+      Class.new { include ElasticsearchV7::API }.new.tap do |_client|
         expect(_client).to receive(:perform_request).with(*expected_args).and_raise(StandardError.new('404 Not Found'))
       end
     end
@@ -81,7 +81,7 @@ describe 'client.indices#exists_alias' do
   context 'when a generic exception is raised' do
 
     let(:client) do
-      Class.new { include Elasticsearch::API }.new.tap do |_client|
+      Class.new { include ElasticsearchV7::API }.new.tap do |_client|
         expect(_client).to receive(:perform_request).with(*expected_args).and_raise(StandardError.new)
       end
     end

@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 ELASTICSEARCH_HOSTS = if hosts = ENV['TEST_ES_SERVER'] || ENV['ELASTICSEARCH_HOSTS']
@@ -75,12 +75,12 @@ module Minitest
   end
 end
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
     class UnitTest < ::Minitest::Test; end
 
     class FakeClient
-      include Elasticsearch::API
+      include ElasticsearchV7::API
 
       def perform_request(method, path, params, body, headers={"Content-Type" => "application/json"})
         puts "PERFORMING REQUEST:", "--> #{method.to_s.upcase} #{path} #{params} #{body} #{headers}"

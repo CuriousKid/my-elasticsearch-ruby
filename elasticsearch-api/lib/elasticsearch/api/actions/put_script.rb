@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # Creates or updates a script.
@@ -27,7 +27,7 @@ module Elasticsearch
 
         _context = arguments.delete(:context)
 
-        method = Elasticsearch::API::HTTP_PUT
+        method = ElasticsearchV7::API::HTTP_PUT
         path   = if _id && _context
                    "_scripts/#{Utils.__listify(_id)}/#{Utils.__listify(_context)}"
                  else

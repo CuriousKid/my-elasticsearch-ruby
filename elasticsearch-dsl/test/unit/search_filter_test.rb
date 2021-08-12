@@ -1,38 +1,38 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class SearchFilterTest < ::Elasticsearch::Test::UnitTestCase
-      subject { Elasticsearch::DSL::Search::Filter.new }
+    class SearchFilterTest < ::ElasticsearchV7::Test::UnitTestCase
+      subject { ElasticsearchV7::DSL::Search::Filter.new }
 
       context "Search Filter" do
 
         should "be serializable to a Hash" do
           assert_equal( {}, subject.to_hash )
 
-          subject = Elasticsearch::DSL::Search::Filter.new
+          subject = ElasticsearchV7::DSL::Search::Filter.new
           subject.instance_variable_set(:@value, { foo: 'bar' })
           assert_equal( { foo: 'bar' }, subject.to_hash )
         end
 
         should "evaluate the block and return itself" do
           block   = Proc.new { 1+1 }
-          subject = Elasticsearch::DSL::Search::Filter.new &block
+          subject = ElasticsearchV7::DSL::Search::Filter.new &block
 
           subject.expects(:instance_eval)
-          assert_instance_of Elasticsearch::DSL::Search::Filter, subject.call
+          assert_instance_of ElasticsearchV7::DSL::Search::Filter, subject.call
         end
 
         should "call the block and return itself" do
           block   = Proc.new { |s| 1+1 }
-          subject = Elasticsearch::DSL::Search::Filter.new &block
+          subject = ElasticsearchV7::DSL::Search::Filter.new &block
 
           block.expects(:call)
-          assert_instance_of Elasticsearch::DSL::Search::Filter, subject.call
+          assert_instance_of ElasticsearchV7::DSL::Search::Filter, subject.call
         end
 
         should "define the value with filter methods" do

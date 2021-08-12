@@ -6,7 +6,7 @@ require 'ruby-prof'
 require 'benchmark'
 require 'ansi'
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
     module Test
 

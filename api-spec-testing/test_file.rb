@@ -1,12 +1,12 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require_relative 'test_file/action'
 require_relative 'test_file/test'
 require_relative 'test_file/task_group'
 
-module Elasticsearch
+module ElasticsearchV7
 
   module RestAPIYAMLTests
 
@@ -55,7 +55,7 @@ module Elasticsearch
       # @example Run the setup tasks.
       #   test_file.setup(client)
       #
-      # @param [ Elasticsearch::Client ] client The client to use to perform the setup tasks.
+      # @param [ ElasticsearchV7::Client ] client The client to use to perform the setup tasks.
       #
       # @return [ self ]
       #
@@ -74,7 +74,7 @@ module Elasticsearch
       # @example Run the teardown tasks.
       #   test_file.teardown(client)
       #
-      # @param [ Elasticsearch::Client ] client The client to use to perform the teardown tasks.
+      # @param [ ElasticsearchV7::Client ] client The client to use to perform the teardown tasks.
       #
       # @return [ self ]
       #
@@ -88,7 +88,7 @@ module Elasticsearch
 
       class << self
 
-        # Prepare Elasticsearch for a single test file.
+        # Prepare ElasticsearchV7 for a single test file.
         # This method deletes indices, roles, datafeeds, etc.
         #
         # @since 6.2.0
@@ -98,7 +98,7 @@ module Elasticsearch
           clear_snapshots_and_repositories(client)
         end
 
-        # Prepare Elasticsearch for a single test file.
+        # Prepare ElasticsearchV7 for a single test file.
         # This method deletes indices, roles, datafeeds, etc.
         #
         # @since 6.2.0

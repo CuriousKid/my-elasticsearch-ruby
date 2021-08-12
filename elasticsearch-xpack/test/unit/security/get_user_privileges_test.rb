@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
     class XPackSecurityGetUserPrivilegesTest < Minitest::Test
 

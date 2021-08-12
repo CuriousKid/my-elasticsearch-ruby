@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "cgi"
@@ -14,7 +14,7 @@ Dir[ File.expand_path('../api/actions/**/params_registry.rb', __FILE__) ].each  
 Dir[ File.expand_path('../api/actions/**/*.rb', __FILE__) ].each   { |f| require f }
 Dir[ File.expand_path('../api/namespace/**/*.rb', __FILE__) ].each { |f| require f }
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     DEFAULT_SERIALIZER = MultiJson
 
@@ -48,16 +48,16 @@ module Elasticsearch
     #
     def self.included(base)
       base.send :include,
-                Elasticsearch::API::Common,
-                Elasticsearch::API::Actions,
-                Elasticsearch::API::Cluster,
-                Elasticsearch::API::Nodes,
-                Elasticsearch::API::Indices,
-                Elasticsearch::API::Ingest,
-                Elasticsearch::API::Snapshot,
-                Elasticsearch::API::Tasks,
-                Elasticsearch::API::Cat,
-                Elasticsearch::API::Remote
+                ElasticsearchV7::API::Common,
+                ElasticsearchV7::API::Actions,
+                ElasticsearchV7::API::Cluster,
+                ElasticsearchV7::API::Nodes,
+                ElasticsearchV7::API::Indices,
+                ElasticsearchV7::API::Ingest,
+                ElasticsearchV7::API::Snapshot,
+                ElasticsearchV7::API::Tasks,
+                ElasticsearchV7::API::Cat,
+                ElasticsearchV7::API::Remote
     end
 
     # The serializer class

@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "bundler/gem_tasks"
@@ -12,7 +12,7 @@ task :test    => 'test:unit'
 require 'rake/testtask'
 namespace :test do
 
-  desc "Wait for Elasticsearch to be in a green state"
+  desc "Wait for ElasticsearchV7 to be in a green state"
   task :wait_for_green do
     sh '../scripts/wait-cluster.sh'
   end

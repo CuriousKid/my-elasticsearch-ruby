@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'pry-nav'
@@ -20,20 +20,20 @@ unless defined?(ELASTICSEARCH_URL)
                         "localhost:#{(ENV['TEST_CLUSTER_PORT'] || 9200)}"
 end
 
-DEFAULT_CLIENT = Elasticsearch::Client.new(host: ELASTICSEARCH_URL,
-                                           tracer: (tracer unless ENV['QUIET']))
+DEFAULT_CLIENT = ElasticsearchV7::Client.new(host: ELASTICSEARCH_URL,
+                                             tracer: (tracer unless ENV['QUIET']))
 
 module HelperModule
   def self.included(context)
 
     context.let(:client_double) do
-      Class.new { include Elasticsearch::API }.new.tap do |client|
+      Class.new { include ElasticsearchV7::API }.new.tap do |client|
         expect(client).to receive(:perform_request).with(*expected_args).and_return(response_double)
       end
     end
 
     context.let(:client) do
-      Class.new { include Elasticsearch::API }.new.tap do |client|
+      Class.new { include ElasticsearchV7::API }.new.tap do |client|
         expect(client).to receive(:perform_request).with(*expected_args).and_return(response_double)
       end
     end

@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module MachineLearning
@@ -21,13 +21,13 @@ module Elasticsearch
 
             _datafeed_id = arguments.delete(:datafeed_id)
 
-            method = Elasticsearch::API::HTTP_GET
+            method = ElasticsearchV7::API::HTTP_GET
             path   = if _datafeed_id
-                       "_ml/datafeeds/#{Elasticsearch::API::Utils.__listify(_datafeed_id)}/_stats"
+                       "_ml/datafeeds/#{ElasticsearchV7::API::Utils.__listify(_datafeed_id)}/_stats"
                      else
                        "_ml/datafeeds/_stats"
   end
-            params = Elasticsearch::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
+            params = ElasticsearchV7::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
 
             body = nil
             perform_request(method, path, params, body).body

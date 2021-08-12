@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "bundler/gem_tasks"
@@ -15,7 +15,7 @@ require 'rspec/core/rake_task'
 
 namespace :test do
 
-  desc "Wait for Elasticsearch to be in a green state"
+  desc "Wait for ElasticsearchV7 to be in a green state"
   task :wait_for_green do
     sh '../scripts/wait-cluster.sh'
   end
@@ -49,18 +49,18 @@ namespace :test do
   end
 
   namespace :cluster do
-    desc "Start Elasticsearch nodes for tests"
+    desc "Start ElasticsearchV7 nodes for tests"
     task :start do
       $LOAD_PATH << File.expand_path('../lib', __FILE__) << File.expand_path('../test', __FILE__)
       require 'elasticsearch/extensions/test/cluster'
-      Elasticsearch::Extensions::Test::Cluster.start
+      ElasticsearchV7::Extensions::Test::Cluster.start
     end
 
-    desc "Stop Elasticsearch nodes for tests"
+    desc "Stop ElasticsearchV7 nodes for tests"
     task :stop do
       $LOAD_PATH << File.expand_path('../lib', __FILE__) << File.expand_path('../test', __FILE__)
       require 'elasticsearch/extensions/test/cluster'
-      Elasticsearch::Extensions::Test::Cluster.stop
+      ElasticsearchV7::Extensions::Test::Cluster.stop
     end
   end
 end

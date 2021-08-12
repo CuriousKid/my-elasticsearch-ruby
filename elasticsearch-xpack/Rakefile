@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'bundler/gem_tasks'
@@ -32,7 +32,7 @@ namespace :test do
   desc "Run integration tests"
   task :integration
 
-  desc "Run Elasticsearch with X-Pack installed (Docker)"
+  desc "Run ElasticsearchV7 with X-Pack installed (Docker)"
     task :elasticsearch do
       sh <<-COMMAND.gsub(/^\s*/, '').gsub(/\s{1,}/, ' ')
         docker run \

@@ -1,14 +1,14 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::Transport::Transport::Base do
+describe ElasticsearchV7::Transport::Transport::Base do
   context 'when a host is printed in a logged message' do
     shared_examples_for 'a redacted string' do
       let(:client) do
-        Elasticsearch::Transport::Client.new(arguments)
+        ElasticsearchV7::Transport::Client.new(arguments)
       end
 
       let(:logger) do
@@ -64,7 +64,7 @@ describe Elasticsearch::Transport::Transport::Base do
   context 'when reload_on_failure is true and and hosts are unreachable' do
 
     let(:client) do
-      Elasticsearch::Transport::Client.new(arguments)
+      ElasticsearchV7::Transport::Client.new(arguments)
     end
 
     let(:arguments) do
@@ -85,7 +85,7 @@ describe Elasticsearch::Transport::Transport::Base do
   context 'when the client has `retry_on_failure` set to an integer' do
 
     let(:client) do
-      Elasticsearch::Transport::Client.new(arguments)
+      ElasticsearchV7::Transport::Client.new(arguments)
     end
 
     let(:arguments) do
@@ -125,7 +125,7 @@ describe Elasticsearch::Transport::Transport::Base do
   context 'when the client has `retry_on_failure` set to true' do
 
     let(:client) do
-      Elasticsearch::Transport::Client.new(arguments)
+      ElasticsearchV7::Transport::Client.new(arguments)
     end
 
     let(:arguments) do
@@ -165,7 +165,7 @@ describe Elasticsearch::Transport::Transport::Base do
   context 'when the client has `retry_on_failure` set to false' do
 
     let(:client) do
-      Elasticsearch::Transport::Client.new(arguments)
+      ElasticsearchV7::Transport::Client.new(arguments)
     end
 
     let(:arguments) do
@@ -205,7 +205,7 @@ describe Elasticsearch::Transport::Transport::Base do
   context 'when the client has no `retry_on_failure` set' do
 
     let(:client) do
-      Elasticsearch::Transport::Client.new(arguments)
+      ElasticsearchV7::Transport::Client.new(arguments)
     end
 
     let(:arguments) do

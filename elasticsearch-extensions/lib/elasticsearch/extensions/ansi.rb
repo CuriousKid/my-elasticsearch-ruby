@@ -17,7 +17,7 @@ require 'elasticsearch/extensions/ansi/helpers'
 require 'elasticsearch/extensions/ansi/actions'
 require 'elasticsearch/extensions/ansi/response'
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
 
     # This extension provides a {ResponseBody#to_ansi} method for the Elasticsearch response body,

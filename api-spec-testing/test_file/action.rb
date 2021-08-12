@@ -1,16 +1,16 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
 
   module RestAPIYAMLTests
 
     # Class representing a single action. An action is one of the following:
     #
     #   1. Applying header settings on a client.
-    #   2. Sending some request to Elasticsearch.
-    #   3. Sending some request to Elasticsearch, expecting an exception.
+    #   2. Sending some request to ElasticsearchV7.
+    #   3. Sending some request to ElasticsearchV7, expecting an exception.
     #
     # @since 6.2.0
     class Action
@@ -35,10 +35,10 @@ module Elasticsearch
       # @example Execute the action.
       #   action.execute(client, test)
       #
-      # @param [ Elasticsearch::Client ] client The client to use to execute the action.
+      # @param [ ElasticsearchV7::Client ] client The client to use to execute the action.
       # @param [ Test ] test The test containing this action. Necessary for caching variables.
       #
-      # @return [ Elasticsearch::Client ] The client. It will be a new one, not the one passed in,
+      # @return [ ElasticsearchV7::Client ] The client. It will be a new one, not the one passed in,
       #   if the action is to set headers.
       #
       # @since 6.2.0
@@ -56,12 +56,12 @@ module Elasticsearch
           case _method
           when 'headers'
             if ENV['QUIET'] == 'true'
-              # todo: create a method on Elasticsearch::Client that can clone the client with new options
-              Elasticsearch::Client.new(host: URL,
-                                        transport_options: TRANSPORT_OPTIONS.merge( headers: prepare_arguments(args, test)))
+              # todo: create a method on ElasticsearchV7::Client that can clone the client with new options
+              ElasticsearchV7::Client.new(host: URL,
+                                          transport_options: TRANSPORT_OPTIONS.merge( headers: prepare_arguments(args, test)))
             else
-              Elasticsearch::Client.new(host: URL, tracer: Logger.new($stdout),
-                                        transport_options: TRANSPORT_OPTIONS.merge( headers: prepare_arguments(args, test)))
+              ElasticsearchV7::Client.new(host: URL, tracer: Logger.new($stdout),
+                                          transport_options: TRANSPORT_OPTIONS.merge( headers: prepare_arguments(args, test)))
             end
           when 'catch'
             client
@@ -95,7 +95,7 @@ module Elasticsearch
                     args[key] = value.gsub(/\$\{?#{cached_value[0]}\}?/, cached_value[1].to_s)
                   end
                 when Time
-                  # The YAML parser reads in dates as Time objects, reconvert to a format Elasticsearch accepts
+                  # The YAML parser reads in dates as Time objects, reconvert to a format ElasticsearchV7 accepts
                   args[key] = (value.to_f * 1000).to_i
                 end
               end

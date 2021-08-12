@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "#{File.expand_path(File.dirname('..'), '..')}/api-spec-testing/test_file"
 require "#{File.expand_path(File.dirname('..'), '..')}/api-spec-testing/rspec_matchers"
-include Elasticsearch::RestAPIYAMLTests
+include ElasticsearchV7::RestAPIYAMLTests
 
 TRANSPORT_OPTIONS = {}
 PROJECT_PATH = File.join(File.dirname(__FILE__), '..', '..')
@@ -22,14 +22,14 @@ end
 if defined?(TEST_HOST) && defined?(TEST_PORT)
   URL = "http://#{TEST_HOST}:#{TEST_PORT}"
 
-  ADMIN_CLIENT = Elasticsearch::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
+  ADMIN_CLIENT = ElasticsearchV7::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
 
   if ENV['QUIET'] == 'true'
-    DEFAULT_CLIENT = Elasticsearch::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
+    DEFAULT_CLIENT = ElasticsearchV7::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
   else
-    DEFAULT_CLIENT = Elasticsearch::Client.new(host: URL,
-                                               transport_options: TRANSPORT_OPTIONS,
-                                               tracer: Logger.new($stdout))
+    DEFAULT_CLIENT = ElasticsearchV7::Client.new(host: URL,
+                                                 transport_options: TRANSPORT_OPTIONS,
+                                                 tracer: Logger.new($stdout))
   end
 end
 
@@ -44,7 +44,7 @@ SINGLE_TEST = if ENV['SINGLE_TEST'] && !ENV['SINGLE_TEST'].empty?
 
 skipped_tests = []
 
-# Response from Elasticsearch is just a String, so it's not possible to compare using headers.
+# Response from ElasticsearchV7 is just a String, so it's not possible to compare using headers.
 skipped_tests << { file:        'cat.aliases/20_headers.yml',
                    description: 'Simple alias with yaml body through Accept header' }
 

@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # encoding: UTF-8
@@ -14,7 +14,7 @@ require 'pry'
 require_relative 'generator/files_helper'
 require_relative 'generator/endpoint_specifics'
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     # A command line application based on [Thor](https://github.com/wycats/thor),
     # which will read the JSON API spec file(s), and generate
@@ -130,17 +130,17 @@ module Elasticsearch
       def __http_method
         case @endpoint_name
         when 'index'
-          '_id ? Elasticsearch::API::HTTP_PUT : Elasticsearch::API::HTTP_POST'
+          '_id ? ElasticsearchV7::API::HTTP_PUT : ElasticsearchV7::API::HTTP_POST'
         when 'count'
           <<~SRC
             if arguments[:body]
-              Elasticsearch::API::HTTP_POST
+              ElasticsearchV7::API::HTTP_POST
             else
-              Elasticsearch::API::HTTP_GET
+              ElasticsearchV7::API::HTTP_GET
             end
           SRC
         else
-          "Elasticsearch::API::HTTP_#{@spec['url']['paths'].map { |a| a['methods'] }.flatten.first}"
+          "ElasticsearchV7::API::HTTP_#{@spec['url']['paths'].map { |a| a['methods'] }.flatten.first}"
         end
       end
 
@@ -238,7 +238,7 @@ module Elasticsearch
       end
 
       def __utils
-        @xpack ? 'Elasticsearch::API::Utils' : 'Utils'
+        @xpack ? 'ElasticsearchV7::API::Utils' : 'Utils'
       end
 
       def run_rubocop

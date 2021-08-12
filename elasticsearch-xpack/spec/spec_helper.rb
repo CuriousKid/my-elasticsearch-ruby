@@ -9,13 +9,13 @@ module HelperModule
   def self.included(context)
 
     context.let(:client_double) do
-      Class.new { include Elasticsearch::XPack::API }.new.tap do |client|
+      Class.new { include ElasticsearchV7::XPack::API }.new.tap do |client|
         expect(client).to receive(:perform_request).with(*expected_args).and_return(response_double)
       end
     end
 
     context.let(:client) do
-      Class.new { include Elasticsearch::XPack::API }.new.tap do |client|
+      Class.new { include ElasticsearchV7::XPack::API }.new.tap do |client|
         expect(client).to receive(:perform_request).with(*expected_args).and_return(response_double)
       end
     end

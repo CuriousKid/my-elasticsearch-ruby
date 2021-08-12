@@ -1,11 +1,11 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Minitest::Test
-  include Elasticsearch::Transport::Transport::HTTP
+class ElasticsearchV7::Transport::Transport::HTTP::FaradayTest < Minitest::Test
+  include ElasticsearchV7::Transport::Transport::HTTP
 
   context "Faraday transport" do
     setup do
@@ -32,7 +32,7 @@ class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Minitest::Test
     should "return a Response" do
       @transport.connections.first.connection.expects(:run_request).returns(stub_everything)
       response = @transport.perform_request 'GET', '/'
-      assert_instance_of Elasticsearch::Transport::Transport::Response, response
+      assert_instance_of ElasticsearchV7::Transport::Transport::Response, response
     end
 
     should "properly prepare the request" do
@@ -83,15 +83,15 @@ class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Minitest::Test
 
     should "pass the selector_class options to collection" do
       @transport = Faraday.new :hosts => [ { :host => 'foobar', :port => 1234 } ],
-                               :options => { :selector_class => Elasticsearch::Transport::Transport::Connections::Selector::Random }
-      assert_instance_of Elasticsearch::Transport::Transport::Connections::Selector::Random,
+                               :options => { :selector_class => ElasticsearchV7::Transport::Transport::Connections::Selector::Random }
+      assert_instance_of ElasticsearchV7::Transport::Transport::Connections::Selector::Random,
                          @transport.connections.selector
     end
 
     should "pass the selector option to collection" do
       @transport = Faraday.new :hosts => [ { :host => 'foobar', :port => 1234 } ],
-                               :options => { :selector => Elasticsearch::Transport::Transport::Connections::Selector::Random.new }
-      assert_instance_of Elasticsearch::Transport::Transport::Connections::Selector::Random,
+                               :options => { :selector => ElasticsearchV7::Transport::Transport::Connections::Selector::Random.new }
+      assert_instance_of ElasticsearchV7::Transport::Transport::Connections::Selector::Random,
                          @transport.connections.selector
     end
 

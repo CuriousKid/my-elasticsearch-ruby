@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module Rollup
@@ -22,8 +22,8 @@ module Elasticsearch
 
             _id = arguments.delete(:id)
 
-            method = Elasticsearch::API::HTTP_DELETE
-            path   = "_rollup/job/#{Elasticsearch::API::Utils.__listify(_id)}"
+            method = ElasticsearchV7::API::HTTP_DELETE
+            path   = "_rollup/job/#{ElasticsearchV7::API::Utils.__listify(_id)}"
             params = {}
 
             body = nil

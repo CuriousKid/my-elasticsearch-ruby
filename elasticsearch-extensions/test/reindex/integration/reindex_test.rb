@@ -1,11 +1,11 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 require 'elasticsearch/extensions/reindex'
 
-class Elasticsearch::Extensions::ReindexIntegrationTest < Elasticsearch::Test::IntegrationTestCase
+class ElasticsearchV7::Extensions::ReindexIntegrationTest < ElasticsearchV7::Test::IntegrationTestCase
   context "The Reindex extension" do
     setup do
       @port = (ENV['TEST_CLUSTER_PORT'] || 9250).to_i
@@ -21,7 +21,7 @@ class Elasticsearch::Extensions::ReindexIntegrationTest < Elasticsearch::Test::I
         ANSI.ansi(severity[0] + ' ', color, :faint) + ANSI.ansi(msg, :white, :faint) + "\n"
       end
 
-      @client = Elasticsearch::Client.new host: "#{TEST_HOST}:#{TEST_PORT}", logger: @logger
+      @client = ElasticsearchV7::Client.new host: "#{TEST_HOST}:#{TEST_PORT}", logger: @logger
       @client.indices.delete index: '_all'
 
       @client.index index: 'test1', type: 'd', id: 1, body: { title: 'TEST 1', category: 'one' }
@@ -39,7 +39,7 @@ class Elasticsearch::Extensions::ReindexIntegrationTest < Elasticsearch::Test::I
     end
 
     should "copy documents from one index to another" do
-      reindex = Elasticsearch::Extensions::Reindex.new \
+      reindex = ElasticsearchV7::Extensions::Reindex.new \
                   source: { index: 'test1', client: @client },
                   target: { index: 'test2' },
                   batch_size: 2,
@@ -52,7 +52,7 @@ class Elasticsearch::Extensions::ReindexIntegrationTest < Elasticsearch::Test::I
     end
 
     should "transform documents with a lambda" do
-      reindex = Elasticsearch::Extensions::Reindex.new \
+      reindex = ElasticsearchV7::Extensions::Reindex.new \
                   source: { index: 'test1', client: @client },
                   target: { index: 'test2' },
                   transform: lambda { |d| d['_source']['category'].upcase! },
@@ -69,7 +69,7 @@ class Elasticsearch::Extensions::ReindexIntegrationTest < Elasticsearch::Test::I
       @client.indices.create index: 'test3', body: { mappings: { properties: { category: { type: 'integer' } }}}
       @client.cluster.health wait_for_status: 'yellow'
 
-      reindex = Elasticsearch::Extensions::Reindex.new \
+      reindex = ElasticsearchV7::Extensions::Reindex.new \
                   source: { index: 'test1', client: @client },
                   target: { index: 'test3' }
 

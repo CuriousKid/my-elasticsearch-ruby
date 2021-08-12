@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module IndexLifecycleManagement
@@ -18,10 +18,10 @@ module Elasticsearch
           def delete_policy(arguments = {})
             raise ArgumentError, "Required argument 'policy_id' missing" unless arguments[:policy_id]
 
-            method = Elasticsearch::API::HTTP_DELETE
-            path   = Elasticsearch::API::Utils.__pathify "_ilm/policy",
-                                                         Elasticsearch::API::Utils.__escape(arguments[:policy_id])
-            params = Elasticsearch::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
+            method = ElasticsearchV7::API::HTTP_DELETE
+            path   = ElasticsearchV7::API::Utils.__pathify "_ilm/policy",
+                                                           ElasticsearchV7::API::Utils.__escape(arguments[:policy_id])
+            params = ElasticsearchV7::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
             body   = nil
 
             perform_request(method, path, params, body).body

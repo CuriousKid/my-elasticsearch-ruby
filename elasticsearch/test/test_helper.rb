@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 ELASTICSEARCH_HOSTS = if hosts = ENV['TEST_ES_SERVER'] || ENV['ELASTICSEARCH_HOSTS']
@@ -33,7 +33,7 @@ end
 # Register `at_exit` handler for integration tests shutdown.
 # MUST be called before requiring `test/unit`.
 if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
-  at_exit { Elasticsearch::Test::IntegrationTestCase.__run_at_exit_hooks }
+  at_exit { ElasticsearchV7::Test::IntegrationTestCase.__run_at_exit_hooks }
 end
 
 require 'test/unit' if RUBY_1_8
@@ -80,22 +80,22 @@ module Minitest
   end
 end
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
     class IntegrationTestCase < ::Minitest::Test
-      extend Elasticsearch::Extensions::Test::StartupShutdown
+      extend ElasticsearchV7::Extensions::Test::StartupShutdown
 
-      shutdown { Elasticsearch::Extensions::Test::Cluster.stop if ENV['SERVER'] && started? && Elasticsearch::Extensions::Test::Cluster.running? }
+      shutdown { ElasticsearchV7::Extensions::Test::Cluster.stop if ENV['SERVER'] && started? && ElasticsearchV7::Extensions::Test::Cluster.running? }
       context "IntegrationTest" do; should "noop on Ruby 1.8" do; end; end if RUBY_1_8
     end if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
   end
 
   module Test
     class ProfilingTest < ::Minitest::Test
-      extend Elasticsearch::Extensions::Test::StartupShutdown
-      extend Elasticsearch::Extensions::Test::Profiling
+      extend ElasticsearchV7::Extensions::Test::StartupShutdown
+      extend ElasticsearchV7::Extensions::Test::Profiling
 
-      shutdown { Elasticsearch::Extensions::Test::Cluster.stop if ENV['SERVER'] && started? && Elasticsearch::Extensions::Test::Cluster.running? }
+      shutdown { ElasticsearchV7::Extensions::Test::Cluster.stop if ENV['SERVER'] && started? && ElasticsearchV7::Extensions::Test::Cluster.running? }
       context "IntegrationTest" do; should "noop on Ruby 1.8" do; end; end if RUBY_1_8
     end unless RUBY_1_8 || JRUBY
   end

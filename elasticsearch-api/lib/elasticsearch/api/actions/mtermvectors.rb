@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # Returns multiple termvectors in one request.
@@ -40,7 +40,7 @@ module Elasticsearch
 
         _type = arguments.delete(:type)
 
-        method = Elasticsearch::API::HTTP_GET
+        method = ElasticsearchV7::API::HTTP_GET
         path   = if _index && _type
                    "#{Utils.__listify(_index)}/#{Utils.__listify(_type)}/_mtermvectors"
                  elsif _index

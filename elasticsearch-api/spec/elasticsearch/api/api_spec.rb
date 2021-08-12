@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::API do
+describe ElasticsearchV7::API do
 
   describe '#settings' do
 
@@ -13,17 +13,17 @@ describe Elasticsearch::API do
     end
 
     it 'has a default serializer' do
-      expect(Elasticsearch::API.serializer).to eq(MultiJson)
+      expect(ElasticsearchV7::API.serializer).to eq(MultiJson)
     end
 
     context 'when settings are changed' do
 
       before do
-        Elasticsearch::API.settings[:foo] = 'bar'
+        ElasticsearchV7::API.settings[:foo] = 'bar'
       end
 
       it 'changes the settings' do
-        expect(Elasticsearch::API.settings[:foo]).to eq('bar')
+        expect(ElasticsearchV7::API.settings[:foo]).to eq('bar')
       end
     end
   end

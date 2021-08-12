@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-# An example of using the percolator with Elasticsearch 5.x and higher
+# An example of using the percolator with ElasticsearchV7 5.x and higher
 # ====================================================================
 #
 # See:
@@ -13,7 +13,7 @@
 require 'ansi'
 require 'elasticsearch'
 
-client = Elasticsearch::Client.new log: true
+client = ElasticsearchV7::Client.new log: true
 client.transport.logger.formatter = proc do |severity, datetime, progname, msg| "\e[2m#{msg}\e[0m\n" end
 
 # Delete the indices used for the example

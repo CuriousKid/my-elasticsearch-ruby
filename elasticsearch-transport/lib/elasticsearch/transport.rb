@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "uri"
@@ -23,13 +23,13 @@ require "elasticsearch/transport/redacted"
 
 require "elasticsearch/transport/version"
 
-module Elasticsearch
+module ElasticsearchV7
   module Client
 
-    # A convenience wrapper for {::Elasticsearch::Transport::Client#initialize}.
+    # A convenience wrapper for {::ElasticsearchV7::Transport::Client#initialize}.
     #
     def new(arguments={}, &block)
-      Elasticsearch::Transport::Client.new(arguments, &block)
+      ElasticsearchV7::Transport::Client.new(arguments, &block)
     end
     extend self
   end

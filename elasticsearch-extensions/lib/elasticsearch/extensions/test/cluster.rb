@@ -22,7 +22,7 @@ class String
   end
 end
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
     module Test
 

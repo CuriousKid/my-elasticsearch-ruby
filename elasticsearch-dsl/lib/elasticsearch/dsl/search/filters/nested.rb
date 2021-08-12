@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module DSL
     module Search
       module Filters
@@ -43,7 +43,7 @@ module Elasticsearch
           end
 
           def query(*args, &block)
-            @query = block ? Elasticsearch::DSL::Search::Query.new(*args, &block) : args.first
+            @query = block ? ElasticsearchV7::DSL::Search::Query.new(*args, &block) : args.first
             self
           end
 

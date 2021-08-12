@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 RUBY_1_8 = defined?(RUBY_VERSION) && RUBY_VERSION < '1.9'
@@ -23,14 +23,14 @@ SKIPPED_TESTS = [ '/nodes.stats/30_discovery.yml' ]
 
 # Launch test cluster
 #
-if ENV['SERVER'] and not Elasticsearch::Extensions::Test::Cluster.running?
-  Elasticsearch::Extensions::Test::Cluster.start
+if ENV['SERVER'] and not ElasticsearchV7::Extensions::Test::Cluster.running?
+  ElasticsearchV7::Extensions::Test::Cluster.start
 end
 
 # Register `at_exit` handler for server shutdown.
 # MUST be called before requiring `test/unit`.
 #
-at_exit { Elasticsearch::Extensions::Test::Cluster.stop if ENV['SERVER'] and Elasticsearch::Extensions::Test::Cluster.running? }
+at_exit { ElasticsearchV7::Extensions::Test::Cluster.stop if ENV['SERVER'] and ElasticsearchV7::Extensions::Test::Cluster.running? }
 
 class String
   # Reset the `ansi` method on CI
@@ -80,24 +80,24 @@ tracer.formatter = proc { |severity, datetime, progname, msg| "#{msg}\n" }
 #
 url = ENV['TEST_CLUSTER_URL'] || ENV['TEST_ES_SERVER']
 url = "http://localhost:#{ENV['TEST_CLUSTER_PORT'] || 9250}" unless url
-$client ||= Elasticsearch::Client.new url: url
-$helper_client ||= Elasticsearch::Client.new url: url
+$client ||= ElasticsearchV7::Client.new url: url
+$helper_client ||= ElasticsearchV7::Client.new url: url
 
 $client.transport.logger = logger unless ENV['QUIET'] || ENV['CI']
 $client.transport.tracer = tracer if ENV['TRACE']
 
-# Store Elasticsearch version
+# Store ElasticsearchV7 version
 #
 es_version_info = $client.info['version']
 $es_version = es_version_info['number']
 
 puts '-'*80,
-     "Elasticsearch #{$es_version.ansi(:bold)} [#{es_version_info['build_hash'].to_s[0...7]}]".center(80),
+     "ElasticsearchV7 #{$es_version.ansi(:bold)} [#{es_version_info['build_hash'].to_s[0...7]}]".center(80),
      '-'*80
 
 require 'test_helper'
 
-class Elasticsearch::Test::YAMLTestReporter < ::MiniTest::Reporters::SpecReporter
+class ElasticsearchV7::Test::YAMLTestReporter < ::MiniTest::Reporters::SpecReporter
   def before_suite(suite)
     puts ">>>>> #{suite.to_s} #{''.ljust(73-suite.to_s.size, '>')}" unless ENV['QUIET']
   end
@@ -146,9 +146,9 @@ class Elasticsearch::Test::YAMLTestReporter < ::MiniTest::Reporters::SpecReporte
   end
 end
 
-Minitest::Reporters.use! Elasticsearch::Test::YAMLTestReporter.new
+Minitest::Reporters.use! ElasticsearchV7::Test::YAMLTestReporter.new
 
-module Elasticsearch
+module ElasticsearchV7
   module YamlTestSuite
     $last_response = ''
     $results = {}
@@ -298,7 +298,7 @@ module Elasticsearch
   end
 end
 
-include Elasticsearch::YamlTestSuite
+include ElasticsearchV7::YamlTestSuite
 
 rest_api_test_source = '../../../../tmp/elasticsearch/rest-api-spec/src/main/resources/rest-api-spec/test'
 PATH    = Pathname(ENV.fetch('TEST_REST_API_SPEC', File.expand_path(rest_api_test_source, __FILE__)))
@@ -307,9 +307,9 @@ suites  = Dir.glob(PATH.join('*')).map { |d| Pathname(d) }
 suites  = suites.select { |s| s.to_s =~ Regexp.new(ENV['FILTER']) } if ENV['FILTER']
 
 suites.each do |suite|
-  name = Elasticsearch::YamlTestSuite::Utils.titleize(suite.basename)
+  name = ElasticsearchV7::YamlTestSuite::Utils.titleize(suite.basename)
 
-  Elasticsearch::YamlTestSuite::Runner.in_context name do
+  ElasticsearchV7::YamlTestSuite::Runner.in_context name do
 
     # --- Register context setup -------------------------------------------
     #
@@ -475,7 +475,7 @@ suites.each do |suite|
                       if 'param' == catch_exception
                         assert_equal 'ArgumentError', e.class.to_s
                       else
-                        if e.class.to_s =~ /Elasticsearch/
+                        if e.class.to_s =~ /ElasticsearchV7/
                           case catch_exception
                             when 'missing'
                               assert_match /\[404\]/, e.message

@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::Transport::Client do
+describe ElasticsearchV7::Transport::Client do
 
   let(:client) do
     described_class.new.tap do |_client|
@@ -12,12 +12,12 @@ describe Elasticsearch::Transport::Client do
     end
   end
 
-  it 'is aliased as Elasticsearch::Client' do
-    expect(Elasticsearch::Client.new).to be_a(described_class)
+  it 'is aliased as ElasticsearchV7::Client' do
+    expect(ElasticsearchV7::Client.new).to be_a(described_class)
   end
 
   it 'has a default transport' do
-    expect(client.transport).to be_a(Elasticsearch::Transport::Client::DEFAULT_TRANSPORT_CLASS)
+    expect(client.transport).to be_a(ElasticsearchV7::Transport::Client::DEFAULT_TRANSPORT_CLASS)
   end
 
   it 'preserves the Faraday default user agent header' do
@@ -25,7 +25,7 @@ describe Elasticsearch::Transport::Client do
   end
 
   it 'identifies the Ruby client in the User-Agent header' do
-    expect(client.transport.connections.first.connection.headers['User-Agent']).to match(/elasticsearch-ruby\/#{Elasticsearch::Transport::VERSION}/)
+    expect(client.transport.connections.first.connection.headers['User-Agent']).to match(/elasticsearch-ruby\/#{ElasticsearchV7::Transport::VERSION}/)
   end
 
   it 'identifies the Ruby version in the User-Agent header' do
@@ -95,7 +95,7 @@ describe Elasticsearch::Transport::Client do
   context 'when the Curb transport class is used', unless: jruby? do
 
     let(:client) do
-      described_class.new(transport_class: Elasticsearch::Transport::Transport::HTTP::Curb)
+      described_class.new(transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb)
     end
 
     it 'preserves the Curb default user agent header' do
@@ -103,7 +103,7 @@ describe Elasticsearch::Transport::Client do
     end
 
     it 'identifies the Ruby client in the User-Agent header' do
-      expect(client.transport.connections.first.connection.headers['User-Agent']).to match(/elasticsearch-ruby\/#{Elasticsearch::Transport::VERSION}/)
+      expect(client.transport.connections.first.connection.headers['User-Agent']).to match(/elasticsearch-ruby\/#{ElasticsearchV7::Transport::VERSION}/)
     end
 
     it 'identifies the Ruby version in the User-Agent header' do
@@ -129,7 +129,7 @@ describe Elasticsearch::Transport::Client do
     context 'when a User-Agent header is specified as a client option' do
 
       let(:client) do
-        described_class.new(transport_class: Elasticsearch::Transport::Transport::HTTP::Curb,
+        described_class.new(transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb,
                             transport_options: { headers: { 'User-Agent' => 'testing' } })
       end
 
@@ -141,7 +141,7 @@ describe Elasticsearch::Transport::Client do
     context 'when a user-agent header is specified as a client option as lower-case' do
 
       let(:client) do
-        described_class.new(transport_class: Elasticsearch::Transport::Transport::HTTP::Curb,
+        described_class.new(transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb,
                             transport_options: { headers: { 'user-agent' => 'testing' } })
       end
 
@@ -153,7 +153,7 @@ describe Elasticsearch::Transport::Client do
     context 'when a Content-Type header is specified as client option' do
 
       let(:client) do
-        described_class.new(transport_class: Elasticsearch::Transport::Transport::HTTP::Curb,
+        described_class.new(transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb,
                             transport_options: { headers: { 'Content-Type' => 'testing' } })
       end
 
@@ -165,7 +165,7 @@ describe Elasticsearch::Transport::Client do
     context 'when a content-type header is specified as client option in lower-case' do
 
       let(:client) do
-        described_class.new(transport_class: Elasticsearch::Transport::Transport::HTTP::Curb,
+        described_class.new(transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb,
                             transport_options: { headers: { 'content-type' => 'testing' } })
       end
 
@@ -1057,7 +1057,7 @@ describe Elasticsearch::Transport::Client do
     end
   end
 
-  context 'when the client connects to Elasticsearch' do
+  context 'when the client connects to ElasticsearchV7' do
 
     let(:logger) do
       Logger.new(STDERR).tap do |logger|
@@ -1121,7 +1121,7 @@ describe Elasticsearch::Transport::Client do
       context 'when a block is provided' do
 
         let(:client) do
-          Elasticsearch::Client.new(host: ELASTICSEARCH_HOSTS.first, logger: logger) do |client|
+          ElasticsearchV7::Client.new(host: ELASTICSEARCH_HOSTS.first, logger: logger) do |client|
             client.headers['Accept'] = 'application/yaml'
           end
         end
@@ -1138,7 +1138,7 @@ describe Elasticsearch::Transport::Client do
         context 'when the Faraday adapter is set in the block' do
 
           let(:client) do
-            Elasticsearch::Client.new(host: ELASTICSEARCH_HOSTS.first, logger: logger) do |client|
+            ElasticsearchV7::Client.new(host: ELASTICSEARCH_HOSTS.first, logger: logger) do |client|
               client.adapter(:net_http_persistent)
             end
           end
@@ -1246,7 +1246,7 @@ describe Elasticsearch::Transport::Client do
         it 'retries when the status matches' do
           expect {
             client.perform_request('PUT', '_foobar')
-          }.to raise_exception(Elasticsearch::Transport::Transport::Errors::BadRequest)
+          }.to raise_exception(ElasticsearchV7::Transport::Transport::Errors::BadRequest)
         end
       end
 
@@ -1356,7 +1356,7 @@ describe Elasticsearch::Transport::Client do
         let(:client) do
           described_class.new(hosts: ELASTICSEARCH_HOSTS,
                               compression: true,
-                              transport_class: Elasticsearch::Transport::Transport::HTTP::Curb)
+                              transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb)
         end
 
         it 'compresses the request and decompresses the response' do
@@ -1377,7 +1377,7 @@ describe Elasticsearch::Transport::Client do
         let(:client) do
           described_class.new(hosts: ELASTICSEARCH_HOSTS,
                               compression: true,
-                              transport_class: Elasticsearch::Transport::Transport::HTTP::Manticore)
+                              transport_class: ElasticsearchV7::Transport::Transport::HTTP::Manticore)
         end
 
         it 'compresses the request and decompresses the response' do
@@ -1416,7 +1416,7 @@ describe Elasticsearch::Transport::Client do
         it 'raises an exception' do
           expect {
             client.perform_request('GET', 'myindex/mydoc/1?routing=FOOBARBAZ')
-          }.to raise_exception(Elasticsearch::Transport::Transport::Errors::NotFound)
+          }.to raise_exception(ElasticsearchV7::Transport::Transport::Errors::NotFound)
         end
       end
 

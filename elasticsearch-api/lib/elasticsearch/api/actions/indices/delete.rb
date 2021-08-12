@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Indices
       module Actions
@@ -26,7 +26,7 @@ module Elasticsearch
 
           _index = arguments.delete(:index)
 
-          method = Elasticsearch::API::HTTP_DELETE
+          method = ElasticsearchV7::API::HTTP_DELETE
           path   = "#{Utils.__listify(_index)}"
           params = Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
 

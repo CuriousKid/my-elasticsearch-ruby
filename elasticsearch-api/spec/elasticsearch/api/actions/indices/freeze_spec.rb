@@ -19,7 +19,7 @@ describe 'client.indices#freeze' do
   context 'when there is no index specified' do
 
     let(:client) do
-      Class.new { include Elasticsearch::API }.new
+      Class.new { include ElasticsearchV7::API }.new
     end
 
     it 'raises an exception' do

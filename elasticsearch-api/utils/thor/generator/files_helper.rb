@@ -1,6 +1,6 @@
 require 'pathname'
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module FilesHelper
       OSS_SRC_PATH   = '../../../../../tmp/elasticsearch/rest-api-spec/src/main/resources/rest-api-spec/api/'.freeze

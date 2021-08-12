@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
@@ -42,7 +42,7 @@ end
 
 require 'elasticsearch/extensions/backup'
 
-class Elasticsearch::Extensions::BackupTest < Elasticsearch::Test::UnitTestCase
+class ElasticsearchV7::Extensions::BackupTest < ElasticsearchV7::Test::UnitTestCase
   context "The Backup gem extension" do
     setup do
       @model = stub trigger: true
@@ -50,7 +50,7 @@ class Elasticsearch::Extensions::BackupTest < Elasticsearch::Test::UnitTestCase
     end
 
     should "have a client" do
-      assert_instance_of Elasticsearch::Transport::Client, @subject.client
+      assert_instance_of ElasticsearchV7::Transport::Client, @subject.client
     end
 
     should "have a path" do

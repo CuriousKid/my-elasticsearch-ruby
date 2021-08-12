@@ -1,17 +1,17 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class QueryIntegrationTest < ::Elasticsearch::Test::IntegrationTestCase
-      include Elasticsearch::DSL::Search
+    class QueryIntegrationTest < ::ElasticsearchV7::Test::IntegrationTestCase
+      include ElasticsearchV7::DSL::Search
 
       context "Queries integration" do
         startup do
-          Elasticsearch::Extensions::Test::Cluster.start(number_of_nodes: 1) if ENV['SERVER'] and not Elasticsearch::Extensions::Test::Cluster.running?(number_of_nodes: 1)
+          ElasticsearchV7::Extensions::Test::Cluster.start(number_of_nodes: 1) if ENV['SERVER'] and not ElasticsearchV7::Extensions::Test::Cluster.running?(number_of_nodes: 1)
         end
 
         setup do
@@ -61,7 +61,7 @@ module Elasticsearch
           end
 
           should "find the document with a filter" do
-            skip "Not supported on this Elasticsearch version" unless @version > '2'
+            skip "Not supported on this ElasticsearchV7 version" unless @version > '2'
 
             response = @client.search index: 'test', body: search {
                 query do

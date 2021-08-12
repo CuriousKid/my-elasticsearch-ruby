@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'elasticsearch/dsl/version'
@@ -22,14 +22,14 @@ Dir[ File.expand_path('../dsl/search/aggregations/**/*.rb', __FILE__) ].each   {
 
 require 'elasticsearch/dsl/search'
 
-module Elasticsearch
+module ElasticsearchV7
 
   # The main module, which can be included into your own class or namespace,
   # to provide the DSL methods.
   #
   # @example
   #
-  #     include Elasticsearch::DSL
+  #     include ElasticsearchV7::DSL
   #
   #     definition = search do
   #       query do
@@ -45,7 +45,7 @@ module Elasticsearch
   #
   module DSL
     def self.included(base)
-      base.__send__ :include, Elasticsearch::DSL::Search
+      base.__send__ :include, ElasticsearchV7::DSL::Search
     end
   end
 end

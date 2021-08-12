@@ -1,13 +1,13 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class SearchSuggestTest < ::Elasticsearch::Test::UnitTestCase
-      subject { Elasticsearch::DSL::Search::Suggest.new :foo }
+    class SearchSuggestTest < ::ElasticsearchV7::Test::UnitTestCase
+      subject { ElasticsearchV7::DSL::Search::Suggest.new :foo }
 
       context "Search suggest" do
         should "be an empty hash by default" do
@@ -15,7 +15,7 @@ module Elasticsearch
         end
 
         should "contain options" do
-          subject = Elasticsearch::DSL::Search::Suggest.new :foo, boo: 'bam'
+          subject = ElasticsearchV7::DSL::Search::Suggest.new :foo, boo: 'bam'
           assert_equal({ foo: { boo: 'bam' } }, subject.to_hash)
         end
       end

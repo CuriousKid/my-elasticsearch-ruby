@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require "#{File.expand_path(File.dirname('..'), '..')}/api-spec-testing/test_file"
 require "#{File.expand_path(File.dirname('..'), '..')}/api-spec-testing/rspec_matchers"
-include Elasticsearch::RestAPIYAMLTests
+include ElasticsearchV7::RestAPIYAMLTests
 
 PROJECT_PATH = File.join(File.dirname(__FILE__), '..', '..')
 
@@ -42,14 +42,14 @@ if defined?(TEST_HOST) && defined?(TEST_PORT)
     URL = "http://#{TEST_HOST}:#{TEST_PORT}"
   end
 
-  ADMIN_CLIENT = Elasticsearch::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
+  ADMIN_CLIENT = ElasticsearchV7::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
 
   if ENV['QUIET'] == 'true'
-    DEFAULT_CLIENT = Elasticsearch::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
+    DEFAULT_CLIENT = ElasticsearchV7::Client.new(host: URL, transport_options: TRANSPORT_OPTIONS)
   else
-    DEFAULT_CLIENT = Elasticsearch::Client.new(host: URL,
-                                               transport_options: TRANSPORT_OPTIONS,
-                                               tracer: Logger.new($stdout))
+    DEFAULT_CLIENT = ElasticsearchV7::Client.new(host: URL,
+                                                 transport_options: TRANSPORT_OPTIONS,
+                                                 tracer: Logger.new($stdout))
   end
 end
 
@@ -65,7 +65,7 @@ SINGLE_TEST = if ENV['SINGLE_TEST'] && !ENV['SINGLE_TEST'].empty?
 
 SKIPPED_TESTS = []
 
-# Respone from Elasticsearch includes the ca.crt, so length doesn't match.
+# Respone from ElasticsearchV7 includes the ca.crt, so length doesn't match.
 SKIPPED_TESTS << { file:        'ssl/10_basic.yml',
                    description: 'Test get SSL certificates' }
 

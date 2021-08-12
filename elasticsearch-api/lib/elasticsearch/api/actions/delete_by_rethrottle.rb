@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # The value of requests_per_second can be changed on a running delete by query using the _rethrottle API
@@ -15,9 +15,9 @@ module Elasticsearch
       def delete_by_query_rethrottle(arguments = {})
         raise ArgumentError, "Required argument 'task_id' missing" unless arguments[:task_id]
 
-        method = Elasticsearch::API::HTTP_POST
+        method = ElasticsearchV7::API::HTTP_POST
         path   = "_delete_by_query/#{arguments[:task_id]}/_rethrottle"
-        params = Elasticsearch::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
+        params = ElasticsearchV7::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
         body   = nil
 
         perform_request(method, path, params, body).body

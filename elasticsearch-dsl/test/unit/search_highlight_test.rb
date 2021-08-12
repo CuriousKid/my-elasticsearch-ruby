@@ -1,17 +1,17 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class HighlightTest < ::Elasticsearch::Test::UnitTestCase
+    class HighlightTest < ::ElasticsearchV7::Test::UnitTestCase
       context "Search highlight" do
-        subject { Elasticsearch::DSL::Search::Highlight.new }
+        subject { ElasticsearchV7::DSL::Search::Highlight.new }
 
         should "take a Hash" do
-          subject  = Elasticsearch::DSL::Search::Highlight.new fields: { 'foo' => {} }, pre_tags: ['*'], post_tags: ['*']
+          subject  = ElasticsearchV7::DSL::Search::Highlight.new fields: {'foo' => {} }, pre_tags: ['*'], post_tags: ['*']
 
           assert_equal({ fields: { 'foo' => {} }, pre_tags: ['*'], post_tags: ['*'] }, subject.to_hash)
         end

@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
 
   module Benchmarking
     # Helper functions used by benchmarking tasks
@@ -132,7 +132,7 @@ module Elasticsearch
 
       # The elasticsearch url to use for the tests.
       #
-      # @return [ String ] The Elasticsearch URL to use in tests.
+      # @return [ String ] The ElasticsearchV7 URL to use in tests.
       #
       # @since 7.0.0
       ELASTICSEARCH_URL = ENV['ELASTICSEARCH_URL'] || "localhost:#{(ENV['TEST_CLUSTER_PORT'] || 9200)}"
@@ -217,9 +217,9 @@ module Elasticsearch
       end
 
       def client
-        @client ||= Elasticsearch::Transport::Client.new(host: ELASTICSEARCH_URL,
-                                                         adapter: adapter,
-                                                         tracer: nil)
+        @client ||= ElasticsearchV7::Transport::Client.new(host: ELASTICSEARCH_URL,
+                                                           adapter: adapter,
+                                                           tracer: nil)
       end
 
       def dataset_slices(slice_size=10000)
@@ -266,7 +266,7 @@ module Elasticsearch
           opts = { host: ES_RESULT_CLUSTER_URL }
           opts.merge!(user: ES_RESULT_CLUSTER_USERNAME) if ES_RESULT_CLUSTER_USERNAME
           opts.merge!(password: ES_RESULT_CLUSTER_PASSWORD) if ES_RESULT_CLUSTER_PASSWORD
-          Elasticsearch::Client.new(opts)
+          ElasticsearchV7::Client.new(opts)
         end
       end
     end

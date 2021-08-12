@@ -1,13 +1,13 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class SearchOptionsTest < ::Elasticsearch::Test::UnitTestCase
-      subject { Elasticsearch::DSL::Search::Options.new }
+    class SearchOptionsTest < ::ElasticsearchV7::Test::UnitTestCase
+      subject { ElasticsearchV7::DSL::Search::Options.new }
 
       context "Search options" do
         should "combine different options" do

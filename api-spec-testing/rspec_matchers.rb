@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # Match the `length` of a field.
@@ -267,9 +267,9 @@ RSpec::Matchers.define :match_error do |expected_error|
       message =~ /\[400\]/ ||
           actual_error.is_a?(ArgumentError)
     when 'unauthorized'
-      actual_error.is_a?(Elasticsearch::Transport::Transport::Errors::Unauthorized)
+      actual_error.is_a?(ElasticsearchV7::Transport::Transport::Errors::Unauthorized)
     when 'forbidden'
-      actual_error.is_a?(Elasticsearch::Transport::Transport::Errors::Forbidden)
+      actual_error.is_a?(ElasticsearchV7::Transport::Transport::Errors::Forbidden)
     else
       message =~ /#{expected_error}/
     end

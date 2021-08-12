@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
@@ -10,8 +10,8 @@ else
   require 'elasticsearch/transport/transport/http/curb'
   require 'curb'
 
-  class Elasticsearch::Transport::Transport::HTTP::FaradayTest < Minitest::Test
-    include Elasticsearch::Transport::Transport::HTTP
+  class ElasticsearchV7::Transport::Transport::HTTP::FaradayTest < Minitest::Test
+    include ElasticsearchV7::Transport::Transport::HTTP
 
     context "Curb transport" do
       setup do

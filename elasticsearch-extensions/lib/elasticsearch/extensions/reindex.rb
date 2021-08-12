@@ -4,7 +4,7 @@
 
 # encoding: utf-8
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
 
     # This module allows copying documents from one index/cluster to another one
@@ -44,8 +44,8 @@ module Elasticsearch
       end
 
       # Include the `reindex` method in the API and client, if available
-      Elasticsearch::API::Actions.__send__ :include, API if defined?(Elasticsearch::API::Actions)
-      Elasticsearch::Transport::Client.__send__ :include, API if defined?(Elasticsearch::Transport::Client) && defined?(Elasticsearch::API)
+      ElasticsearchV7::API::Actions.__send__ :include, API if defined?(ElasticsearchV7::API::Actions)
+      ElasticsearchV7::Transport::Client.__send__ :include, API if defined?(ElasticsearchV7::Transport::Client) && defined?(ElasticsearchV7::API)
 
       # Copy documents from one index into another
       #

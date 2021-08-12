@@ -1,29 +1,29 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class BaseComponentTest < ::Elasticsearch::Test::UnitTestCase
+    class BaseComponentTest < ::ElasticsearchV7::Test::UnitTestCase
       context "BaseComponent" do
 
         class DummyComponent
-          include Elasticsearch::DSL::Search::BaseComponent
+          include ElasticsearchV7::DSL::Search::BaseComponent
         end
 
         class DummyComponentWithAName
-          include Elasticsearch::DSL::Search::BaseComponent
+          include ElasticsearchV7::DSL::Search::BaseComponent
           name :foo
         end
 
         class DummyComponentWithNewName
-          include Elasticsearch::DSL::Search::BaseComponent
+          include ElasticsearchV7::DSL::Search::BaseComponent
         end
 
         class DummyCompoundFilter
-          include Elasticsearch::DSL::Search::BaseCompoundFilterComponent
+          include ElasticsearchV7::DSL::Search::BaseCompoundFilterComponent
         end
 
         subject { DummyComponent.new :foo }
@@ -57,7 +57,7 @@ module Elasticsearch
 
         should "have an option method with args" do
           class DummyComponentWithOptionMethod
-            include Elasticsearch::DSL::Search::BaseComponent
+            include ElasticsearchV7::DSL::Search::BaseComponent
             option_method :bar
           end
 
@@ -70,7 +70,7 @@ module Elasticsearch
 
         should "keep track of option methods" do
           class DummyComponentWithCustomOptionMethod
-            include Elasticsearch::DSL::Search::BaseComponent
+            include ElasticsearchV7::DSL::Search::BaseComponent
             option_method :foo
           end
 
@@ -80,7 +80,7 @@ module Elasticsearch
 
         should "have an option method without args" do
           class DummyComponentWithOptionMethod
-            include Elasticsearch::DSL::Search::BaseComponent
+            include ElasticsearchV7::DSL::Search::BaseComponent
             option_method :bar
           end
 
@@ -93,7 +93,7 @@ module Elasticsearch
 
         should "define a custom option method" do
           class DummyComponentWithCustomOptionMethod
-            include Elasticsearch::DSL::Search::BaseComponent
+            include ElasticsearchV7::DSL::Search::BaseComponent
             option_method :bar, lambda { |*args| @hash = { :foo => 'bar' } }
           end
 
@@ -139,7 +139,7 @@ module Elasticsearch
 
           should "build the hash with the option method" do
             class DummyComponentWithOptionMethod
-              include Elasticsearch::DSL::Search::BaseComponent
+              include ElasticsearchV7::DSL::Search::BaseComponent
               option_method :foo
             end
 
@@ -158,7 +158,7 @@ module Elasticsearch
 
           should "merge the top-level options to the hash" do
             class DummyComponentWithOptionMethod
-              include Elasticsearch::DSL::Search::BaseComponent
+              include ElasticsearchV7::DSL::Search::BaseComponent
               option_method :bar
             end
 

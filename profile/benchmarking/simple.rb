@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'objspace'
 
-module Elasticsearch
+module ElasticsearchV7
   module Benchmarking
 
     # Class encapsulating all settings and functionality for running benchmarking
@@ -264,7 +264,7 @@ module Elasticsearch
           search_criteria = { match: { cuisine: 'mexican' } }
           request = { body: { query: search_criteria } }
           if noop_plugin?
-            Elasticsearch::API.const_set('UNDERSCORE_SEARCH', '_noop_search')
+            ElasticsearchV7::API.const_set('UNDERSCORE_SEARCH', '_noop_search')
           else
             request.merge!(index: INDEX)
           end
@@ -312,7 +312,7 @@ module Elasticsearch
           search_criteria = { match: { 'user.lang': 'en' } }
           request = { body: { query: search_criteria } }
           if noop_plugin?
-            Elasticsearch::API.const_set('UNDERSCORE_SEARCH', '_noop_search')
+            ElasticsearchV7::API.const_set('UNDERSCORE_SEARCH', '_noop_search')
           else
             request.merge!(index: INDEX)
           end

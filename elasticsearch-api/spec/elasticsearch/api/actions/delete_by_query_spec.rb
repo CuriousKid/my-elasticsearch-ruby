@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
@@ -17,7 +17,7 @@ describe 'client#delete_by_query' do
 
   it 'requires the :index argument' do
     expect {
-      Class.new { include Elasticsearch::API }.new.delete_by_query(body: {})
+      Class.new { include ElasticsearchV7::API }.new.delete_by_query(body: {})
     }.to raise_exception(ArgumentError)
   end
 

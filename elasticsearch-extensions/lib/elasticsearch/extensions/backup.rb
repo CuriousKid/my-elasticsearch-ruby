@@ -144,7 +144,7 @@ module Backup
       end
 
       def client
-        @client ||= ::Elasticsearch::Client.new url: url, logger: logger
+        @client ||= ::ElasticsearchV7::Client.new url: url, logger: logger
       end
 
       def path
@@ -186,4 +186,4 @@ module Backup
   end
 end
 
-::Backup::Config::DSL::Elasticsearch = ::Backup::Database::Elasticsearch
+::Backup::Config::DSL::ElasticsearchV7 = ::Backup::Database::Elasticsearch

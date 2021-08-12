@@ -2,7 +2,7 @@
 # Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module Extensions
     module Test
       # Startup/shutdown support for test suites

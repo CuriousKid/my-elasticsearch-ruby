@@ -1,16 +1,16 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::IntegrationTestCase
+class ElasticsearchV7::Transport::ClientIntegrationTest < ElasticsearchV7::Test::IntegrationTestCase
   startup do
-    Elasticsearch::Extensions::Test::Cluster.start(number_of_nodes: 2) if ENV['SERVER'] and not Elasticsearch::Extensions::Test::Cluster.running?(number_of_nodes: 2)
+    ElasticsearchV7::Extensions::Test::Cluster.start(number_of_nodes: 2) if ENV['SERVER'] and not ElasticsearchV7::Extensions::Test::Cluster.running?(number_of_nodes: 2)
   end
 
   shutdown do
-    Elasticsearch::Extensions::Test::Cluster.stop(number_of_nodes: 2) if ENV['SERVER'] and Elasticsearch::Extensions::Test::Cluster.running?(number_of_nodes: 2)
+    ElasticsearchV7::Extensions::Test::Cluster.stop(number_of_nodes: 2) if ENV['SERVER'] and ElasticsearchV7::Extensions::Test::Cluster.running?(number_of_nodes: 2)
   end
 
   context "Transport" do
@@ -23,25 +23,25 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
       require 'typhoeus'
       require 'typhoeus/adapters/faraday'
 
-      transport = Elasticsearch::Transport::Transport::HTTP::Faraday.new \
+      transport = ElasticsearchV7::Transport::Transport::HTTP::Faraday.new \
         :hosts => [ { host: @host, port: @port } ] do |f|
           f.response :logger
           f.adapter  :typhoeus
         end
 
-      client = Elasticsearch::Transport::Client.new transport: transport
+      client = ElasticsearchV7::Transport::Client.new transport: transport
       client.perform_request 'GET', ''
     end
 
     should "allow to define connection parameters and pass them" do
-      transport = Elasticsearch::Transport::Transport::HTTP::Faraday.new \
+      transport = ElasticsearchV7::Transport::Transport::HTTP::Faraday.new \
                     :hosts => [ { host: @host, port: @port } ],
                     :options => { :transport_options => {
                                     :params => { :format => 'yaml' }
                                   }
                                 }
 
-      client = Elasticsearch::Transport::Client.new transport: transport
+      client = ElasticsearchV7::Transport::Client.new transport: transport
       response = client.perform_request 'GET', ''
 
       assert response.body.start_with?("---\n"), "Response body should be YAML: #{response.body.inspect}"
@@ -51,12 +51,12 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
       require 'curb'
       require 'elasticsearch/transport/transport/http/curb'
 
-      transport = Elasticsearch::Transport::Transport::HTTP::Curb.new \
+      transport = ElasticsearchV7::Transport::Transport::HTTP::Curb.new \
         :hosts => [ { host: @host, port: @port } ] do |curl|
           curl.verbose = true
         end
 
-      client = Elasticsearch::Transport::Client.new transport: transport
+      client = ElasticsearchV7::Transport::Client.new transport: transport
       client.perform_request 'GET', ''
     end unless JRUBY
 
@@ -64,12 +64,12 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
       require 'curb'
       require 'elasticsearch/transport/transport/http/curb'
 
-      transport = Elasticsearch::Transport::Transport::HTTP::Curb.new \
+      transport = ElasticsearchV7::Transport::Transport::HTTP::Curb.new \
         :hosts => [ { host: @host, port: @port } ] do |curl|
           curl.verbose = true
         end
 
-      client = Elasticsearch::Transport::Client.new transport: transport
+      client = ElasticsearchV7::Transport::Client.new transport: transport
       response = client.perform_request 'GET', ''
 
       assert_respond_to(response.body, :to_hash)

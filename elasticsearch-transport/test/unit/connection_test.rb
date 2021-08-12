@@ -1,11 +1,11 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 
-class Elasticsearch::Transport::Transport::Connections::ConnectionTest < Minitest::Test
-  include Elasticsearch::Transport::Transport::Connections
+class ElasticsearchV7::Transport::Transport::Connections::ConnectionTest < Minitest::Test
+  include ElasticsearchV7::Transport::Transport::Connections
 
   context "Connection" do
 

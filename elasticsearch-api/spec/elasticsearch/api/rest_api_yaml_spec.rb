@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 #
 require 'spec_helper'
@@ -9,7 +9,7 @@ describe 'Rest API YAML tests' do
 
   REST_API_YAML_FILES.each do |file|
 
-    test_file = Elasticsearch::RestAPIYAMLTests::TestFile.new(file, REST_API_YAML_SKIP_FEATURES)
+    test_file = ElasticsearchV7::RestAPIYAMLTests::TestFile.new(file, REST_API_YAML_SKIP_FEATURES)
 
     context "#{file.gsub("#{YAML_FILES_DIRECTORY}/", '')}" do
 
@@ -29,13 +29,13 @@ describe 'Rest API YAML tests' do
             # Runs once before each test in a test file
             before(:all) do
               # Runs once before each test in a test file
-              Elasticsearch::RestAPIYAMLTests::TestFile.clear_data(ADMIN_CLIENT)
+              ElasticsearchV7::RestAPIYAMLTests::TestFile.clear_data(ADMIN_CLIENT)
               test_file.setup(ADMIN_CLIENT)
             end
 
             after(:all) do
               test_file.teardown(ADMIN_CLIENT)
-              Elasticsearch::RestAPIYAMLTests::TestFile.clear_data(ADMIN_CLIENT)
+              ElasticsearchV7::RestAPIYAMLTests::TestFile.clear_data(ADMIN_CLIENT)
             end
 
             test.task_groups.each do |task_group|

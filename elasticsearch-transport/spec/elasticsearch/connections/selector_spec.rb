@@ -1,14 +1,14 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::Transport::Transport::Connections::Selector do
+describe ElasticsearchV7::Transport::Transport::Connections::Selector do
 
   before do
     class BackupStrategySelector
-      include Elasticsearch::Transport::Transport::Connections::Selector::Base
+      include ElasticsearchV7::Transport::Transport::Connections::Selector::Base
 
       def select(options={})
         connections.reject do |c|
@@ -144,7 +144,7 @@ describe Elasticsearch::Transport::Transport::Connections::Selector do
 
     before do
       class ExampleSelector
-        include Elasticsearch::Transport::Transport::Connections::Selector::Base
+        include ElasticsearchV7::Transport::Transport::Connections::Selector::Base
       end
     end
 

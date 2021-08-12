@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module Security
@@ -25,13 +25,13 @@ module Elasticsearch
 
             _username = arguments.delete(:username)
 
-            method = Elasticsearch::API::HTTP_PUT
+            method = ElasticsearchV7::API::HTTP_PUT
             path   = if _username
-                       "_security/user/#{Elasticsearch::API::Utils.__listify(_username)}/_password"
+                       "_security/user/#{ElasticsearchV7::API::Utils.__listify(_username)}/_password"
                      else
                        "_security/user/_password"
   end
-            params = Elasticsearch::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
+            params = ElasticsearchV7::API::Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
 
             body = arguments[:body]
             perform_request(method, path, params, body).body

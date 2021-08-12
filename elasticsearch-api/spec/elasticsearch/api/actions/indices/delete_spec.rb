@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
@@ -64,7 +64,7 @@ describe 'client.indices#delete' do
   context 'when a NotFound exception is raised by the request' do
 
     let(:client) do
-      Class.new { include Elasticsearch::API }.new
+      Class.new { include ElasticsearchV7::API }.new
     end
 
     before do
@@ -81,7 +81,7 @@ describe 'client.indices#delete' do
   context 'when the ignore parameter is specified' do
 
     let(:client) do
-      Class.new { include Elasticsearch::API }.new
+      Class.new { include ElasticsearchV7::API }.new
     end
 
     before do

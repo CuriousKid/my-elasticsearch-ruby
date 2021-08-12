@@ -1,10 +1,10 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'spec_helper'
 
-describe Elasticsearch::Transport::Transport::Connections::Collection do
+describe ElasticsearchV7::Transport::Transport::Connections::Collection do
 
   describe '#initialize' do
 
@@ -23,11 +23,11 @@ describe Elasticsearch::Transport::Transport::Connections::Collection do
     context 'when a selector class is specified' do
 
       let(:collection) do
-        described_class.new(selector_class: Elasticsearch::Transport::Transport::Connections::Selector::Random)
+        described_class.new(selector_class: ElasticsearchV7::Transport::Transport::Connections::Selector::Random)
       end
 
       it 'sets the selector' do
-        expect(collection.selector).to be_a(Elasticsearch::Transport::Transport::Connections::Selector::Random)
+        expect(collection.selector).to be_a(ElasticsearchV7::Transport::Transport::Connections::Selector::Random)
       end
     end
   end
@@ -35,7 +35,7 @@ describe Elasticsearch::Transport::Transport::Connections::Collection do
   describe '#get_connection' do
 
     let(:collection) do
-      described_class.new(selector_class: Elasticsearch::Transport::Transport::Connections::Selector::Random)
+      described_class.new(selector_class: ElasticsearchV7::Transport::Transport::Connections::Selector::Random)
     end
 
     before do
@@ -191,11 +191,11 @@ describe Elasticsearch::Transport::Transport::Connections::Collection do
     context 'when all connections are dead' do
 
       let(:connection_a) do
-        Elasticsearch::Transport::Transport::Connections::Connection.new(host: { host: 'A' })
+        ElasticsearchV7::Transport::Transport::Connections::Connection.new(host: {host: 'A' })
       end
 
       let(:connection_b) do
-        Elasticsearch::Transport::Transport::Connections::Connection.new(host: { host: 'B' })
+        ElasticsearchV7::Transport::Transport::Connections::Connection.new(host: {host: 'B' })
       end
 
       let(:collection) do
@@ -216,7 +216,7 @@ describe Elasticsearch::Transport::Transport::Connections::Collection do
 
       let(:connections) do
         20.times.collect do |i|
-          Elasticsearch::Transport::Transport::Connections::Connection.new(host: { host: i })
+          ElasticsearchV7::Transport::Transport::Connections::Connection.new(host: {host: i })
         end
       end
 

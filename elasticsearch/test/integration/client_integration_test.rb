@@ -1,22 +1,22 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 require 'test_helper'
 require 'logger'
 
-module Elasticsearch
+module ElasticsearchV7
   module Test
-    class ClientIntegrationTest < Elasticsearch::Test::IntegrationTestCase
+    class ClientIntegrationTest < ElasticsearchV7::Test::IntegrationTestCase
       startup do
-        Elasticsearch::Extensions::Test::Cluster.start(number_of_nodes: 2) if ENV['SERVER'] and not Elasticsearch::Extensions::Test::Cluster.running?(number_of_nodes: 2)
+        ElasticsearchV7::Extensions::Test::Cluster.start(number_of_nodes: 2) if ENV['SERVER'] and not ElasticsearchV7::Extensions::Test::Cluster.running?(number_of_nodes: 2)
       end
 
       shutdown do
-        Elasticsearch::Extensions::Test::Cluster.stop(number_of_nodes: 2) if ENV['SERVER'] and Elasticsearch::Extensions::Test::Cluster.running?(number_of_nodes: 2)
+        ElasticsearchV7::Extensions::Test::Cluster.stop(number_of_nodes: 2) if ENV['SERVER'] and ElasticsearchV7::Extensions::Test::Cluster.running?(number_of_nodes: 2)
       end
 
-      context "Elasticsearch client" do
+      context "ElasticsearchV7 client" do
         setup do
           system "curl -X DELETE http://#{TEST_HOST}:#{TEST_PORT}/_all > /dev/null 2>&1"
 
@@ -31,7 +31,7 @@ module Elasticsearch
             ANSI.ansi(severity[0] + ' ', color, :faint) + ANSI.ansi(msg, :white, :faint) + "\n"
           end
 
-          @client = Elasticsearch::Client.new host: "#{TEST_HOST}:#{TEST_PORT}", logger: (ENV['QUIET'] ? nil : @logger)
+          @client = ElasticsearchV7::Client.new host: "#{TEST_HOST}:#{TEST_PORT}", logger: (ENV['QUIET'] ? nil : @logger)
         end
 
         should "perform the API methods" do

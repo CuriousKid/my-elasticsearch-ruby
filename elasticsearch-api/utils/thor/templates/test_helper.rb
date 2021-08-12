@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 RUBY_1_8 = defined?(RUBY_VERSION) && RUBY_VERSION < '1.9'
@@ -19,7 +19,7 @@ Dir[ File.expand_path('../../lib/elasticsearch/api/**/*.rb', __FILE__) ].each do
 end
 RequireProf.print_timing_infos if ENV["REQUIRE_PROF"]
 
-module Elasticsearch
+module ElasticsearchV7
   module Utils
     def __validate_and_extract_params(*args)
       {}
@@ -45,7 +45,7 @@ module Elasticsearch
 
     class FakeClient
       # Include all "Actions" modules into the fake client
-      Elasticsearch::Test.__full_namespace(Elasticsearch::API).select { |m| m.to_s =~ /Actions$/ }.each do |m|
+      ElasticsearchV7::Test.__full_namespace(ElasticsearchV7::API).select { |m| m.to_s =~ /Actions$/ }.each do |m|
         puts "Including: #{m}" if ENV['DEBUG']
         include m
       end

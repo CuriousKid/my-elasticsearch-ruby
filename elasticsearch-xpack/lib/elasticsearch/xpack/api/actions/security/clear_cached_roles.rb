@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module XPack
     module API
       module Security
@@ -22,8 +22,8 @@ module Elasticsearch
 
             _name = arguments.delete(:name)
 
-            method = Elasticsearch::API::HTTP_POST
-            path   = "_security/role/#{Elasticsearch::API::Utils.__listify(_name)}/_clear_cache"
+            method = ElasticsearchV7::API::HTTP_POST
+            path   = "_security/role/#{ElasticsearchV7::API::Utils.__listify(_name)}/_clear_cache"
             params = {}
 
             body = nil

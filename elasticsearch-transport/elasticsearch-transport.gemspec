@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 # coding: utf-8
@@ -9,10 +9,10 @@ require 'elasticsearch/transport/version'
 
 Gem::Specification.new do |s|
   s.name          = "elasticsearch-transport-v7"
-  s.version       = Elasticsearch::Transport::VERSION
+  s.version       = ElasticsearchV7::Transport::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
-  s.summary       = "Ruby client for Elasticsearch."
+  s.summary       = "Ruby client for ElasticsearchV7."
   s.homepage      = "https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport"
   s.license       = "Apache-2.0"
 
@@ -78,6 +78,6 @@ Gem::Specification.new do |s|
   end
 
   s.description = <<-DESC.gsub(/^    /, '')
-    Ruby client for Elasticsearch. See the `elasticsearch` gem for full integration.
+    Ruby client for ElasticsearchV7. See the `elasticsearch` gem for full integration.
   DESC
 end

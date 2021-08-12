@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Nodes
       module Actions
@@ -31,7 +31,7 @@ module Elasticsearch
 
           _node_id = arguments.delete(:node_id)
 
-          method = Elasticsearch::API::HTTP_GET
+          method = ElasticsearchV7::API::HTTP_GET
           path   = if _node_id
                      "_cluster/nodes/#{Utils.__listify(_node_id)}/hot_threads"
                    else

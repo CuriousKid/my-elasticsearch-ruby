@@ -1,5 +1,5 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
 lib = File.expand_path('../lib', __FILE__)
@@ -8,10 +8,10 @@ require 'elasticsearch/version'
 
 Gem::Specification.new do |s|
   s.name          = "elasticsearch-v7"
-  s.version       = Elasticsearch::VERSION
+  s.version       = ElasticsearchV7::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
-  s.summary       = "Ruby integrations for Elasticsearch"
+  s.summary       = "Ruby integrations for ElasticsearchV7"
   s.homepage      = "http://github.com/elasticsearch/elasticsearch-ruby"
   s.license       = "Apache-2.0"
 
@@ -69,6 +69,6 @@ Gem::Specification.new do |s|
   end
 
   s.description = <<-DESC.gsub(/^    /, '')
-    Ruby integrations for Elasticsearch (client, API, etc.)
+    Ruby integrations for ElasticsearchV7 (client, API, etc.)
   DESC
 end

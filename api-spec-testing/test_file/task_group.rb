@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
 
   module RestAPIYAMLTests
 
@@ -64,7 +64,7 @@ module Elasticsearch
           # @example Run the actions
           #   task_group.run(client)
           #
-          # @param [ Elasticsearch::Client ] client The client to use to run the actions.
+          # @param [ ElasticsearchV7::Client ] client The client to use to run the actions.
           #
           # @return [ self ]
           #

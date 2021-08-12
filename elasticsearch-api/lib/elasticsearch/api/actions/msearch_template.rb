@@ -1,8 +1,8 @@
-# Licensed to Elasticsearch B.V under one or more agreements.
-# Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+# Licensed to ElasticsearchV7 B.V under one or more agreements.
+# ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-module Elasticsearch
+module ElasticsearchV7
   module API
     module Actions
       # Allows to execute several search template operations in one request.
@@ -34,7 +34,7 @@ module Elasticsearch
 
         _type = arguments.delete(:type)
 
-        method = Elasticsearch::API::HTTP_GET
+        method = ElasticsearchV7::API::HTTP_GET
         path   = if _index && _type
                    "#{Utils.__listify(_index)}/#{Utils.__listify(_type)}/_msearch/template"
                  elsif _index
@@ -47,7 +47,7 @@ module Elasticsearch
         body = arguments[:body]
         case
         when body.is_a?(Array)
-          payload = body.map { |d| d.is_a?(String) ? d : Elasticsearch::API.serializer.dump(d) }
+          payload = body.map { |d| d.is_a?(String) ? d : ElasticsearchV7::API.serializer.dump(d) }
           payload << "" unless payload.empty?
           payload = payload.join("
 ")
