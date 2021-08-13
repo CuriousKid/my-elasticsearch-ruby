@@ -5,15 +5,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'elasticsearch/api/version'
+require 'elasticsearch_v7/transport/version'
 
 Gem::Specification.new do |s|
-  s.name          = "elasticsearch_v7-api"
-  s.version       = ElasticsearchV7::API::VERSION
+  s.name          = "elasticsearch_v7-transport"
+  s.version       = ElasticsearchV7::Transport::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
-  s.summary       = "Ruby API for ElasticsearchV7."
-  s.homepage      = "https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-api"
+  s.summary       = "Ruby client for ElasticsearchV7."
+  s.homepage      = "https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport"
   s.license       = "Apache-2.0"
 
   s.files         = `git ls-files`.split($/)
@@ -27,6 +27,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9'
 
   s.add_dependency "multi_json"
+  s.add_dependency "faraday", '>= 0.14', "< 1"
+
+  if defined?(RUBY_VERSION) && RUBY_VERSION < '1.9'
+    s.add_dependency "system_timer"
+  end
 
   s.add_development_dependency "bundler"
 
@@ -36,15 +41,6 @@ Gem::Specification.new do |s|
     s.add_development_dependency "rake", "< 11.0"
   end
 
-  s.add_development_dependency "elasticsearch_v7"
-  s.add_development_dependency "elasticsearch_v7-transport"
-
-  if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
-    s.add_development_dependency "minitest"
-    s.add_development_dependency "minitest-reporters"
-    s.add_development_dependency "elasticsearch-extensions"
-  end
-
   s.add_development_dependency "ansi"
   s.add_development_dependency "shoulda-context"
   s.add_development_dependency "mocha"
@@ -52,7 +48,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry"
 
   # Gems for testing integrations
-  s.add_development_dependency "jsonify"
+  s.add_development_dependency "curb"   unless defined? JRUBY_VERSION
+  s.add_development_dependency "patron" unless defined? JRUBY_VERSION
+  s.add_development_dependency "typhoeus", '~> 0.6'
+  s.add_development_dependency "net-http-persistent"
+  s.add_development_dependency "httpclient"
+  s.add_development_dependency "manticore", '~> 0.6' if defined? JRUBY_VERSION
   s.add_development_dependency "hashie"
 
   # Prevent unit test failures on Ruby 1.8
@@ -62,13 +63,14 @@ Gem::Specification.new do |s|
   end
 
   if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
-    s.add_development_dependency "ruby-prof" unless defined?(JRUBY_VERSION) || defined?(Rubinius)
-    s.add_development_dependency "jbuilder"
-    s.add_development_dependency "escape_utils" unless defined? JRUBY_VERSION
+    s.add_development_dependency "minitest"
+    s.add_development_dependency "minitest-reporters"
+    s.add_development_dependency "elasticsearch-extensions"
+    s.add_development_dependency "ruby-prof"    unless defined?(JRUBY_VERSION) || defined?(Rubinius)
+    s.add_development_dependency "require-prof" unless defined?(JRUBY_VERSION) || defined?(Rubinius)
     s.add_development_dependency "simplecov", '~> 0.17', '< 0.18'
     s.add_development_dependency "simplecov-rcov"
     s.add_development_dependency "cane"
-    s.add_development_dependency "require-prof" unless defined?(JRUBY_VERSION) || defined?(Rubinius)
   end
 
   if defined?(RUBY_VERSION) && RUBY_VERSION > '2.2'
@@ -76,6 +78,6 @@ Gem::Specification.new do |s|
   end
 
   s.description = <<-DESC.gsub(/^    /, '')
-    Ruby API for ElasticsearchV7. See the `elasticsearch` gem for full integration.
+    Ruby client for ElasticsearchV7. See the `elasticsearch` gem for full integration.
   DESC
 end
