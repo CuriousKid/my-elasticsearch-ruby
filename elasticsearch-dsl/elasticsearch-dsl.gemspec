@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake", "~> 11.1"
 
-  s.add_development_dependency "elasticsearch"
+  s.add_development_dependency "elasticsearch_v7"
   s.add_development_dependency "elasticsearch-extensions"
 
   s.add_development_dependency 'shoulda-context'

@@ -8,7 +8,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'elasticsearch/api/version'
 
 Gem::Specification.new do |s|
-  s.name          = "elasticsearch-api-v7"
+  s.name          = "elasticsearch_v7-api"
   s.version       = ElasticsearchV7::API::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
@@ -36,8 +36,8 @@ Gem::Specification.new do |s|
     s.add_development_dependency "rake", "< 11.0"
   end
 
-  s.add_development_dependency "elasticsearch"
-  s.add_development_dependency "elasticsearch-transport"
+  s.add_development_dependency "elasticsearch_v7"
+  s.add_development_dependency "elasticsearch_v7-transport"
 
   if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
     s.add_development_dependency "minitest"

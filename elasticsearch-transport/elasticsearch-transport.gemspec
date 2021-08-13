@@ -8,7 +8,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'elasticsearch/transport/version'
 
 Gem::Specification.new do |s|
-  s.name          = "elasticsearch-transport-v7"
+  s.name          = "elasticsearch_v7-transport"
   s.version       = ElasticsearchV7::Transport::VERSION
   s.authors       = ["Karel Minarik"]
   s.email         = ["karel.minarik@elasticsearch.org"]
