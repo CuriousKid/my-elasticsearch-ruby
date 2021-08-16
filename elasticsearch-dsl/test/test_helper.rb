@@ -29,7 +29,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 #                            Minitest::Reporters::JUnitReporter.new,
 #                            Minitest::Reporters::HtmlReporter.new ]
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/extensions/test/cluster'
 require 'elasticsearch/extensions/test/startup_shutdown'
 

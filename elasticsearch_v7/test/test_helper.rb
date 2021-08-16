@@ -44,7 +44,7 @@ require 'shoulda/context'
 require 'mocha/minitest'
 
 require 'require-prof' if ENV["REQUIRE_PROF"]
-require 'elasticsearch'
+require 'elasticsearch_v7'
 RequireProf.print_timing_infos if ENV["REQUIRE_PROF"]
 
 if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'

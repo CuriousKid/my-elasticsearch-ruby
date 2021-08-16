@@ -41,7 +41,7 @@ require 'mocha/minitest'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require 'require-prof' if ENV["REQUIRE_PROF"]
-require 'elasticsearch/api'
+require 'elasticsearch_v7/api'
 RequireProf.print_timing_infos if ENV["REQUIRE_PROF"]
 
 if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'

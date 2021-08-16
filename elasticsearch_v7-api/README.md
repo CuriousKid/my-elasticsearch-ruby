@@ -54,7 +54,7 @@ providing connection to Elasticsearch -- an Elasticsearch client.
 the library modules have been already included**, so you just call the API methods:
 
 ```ruby
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 client = Elasticsearch::Client.new log: true
 
@@ -80,7 +80,7 @@ A simple client could look like this:
 ```ruby
 require 'multi_json'
 require 'faraday'
-require 'elasticsearch/api'
+require 'elasticsearch_v7/api'
 
 class MySimpleClient
   include Elasticsearch::API

@@ -22,7 +22,7 @@ rescue LoadError
 end
 
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 module Backup
   module Database
@@ -86,7 +86,7 @@ module Backup
     #
     #     PATH = '/path/to/backup/'
     #
-    #     require 'elasticsearch'
+    #     require 'elasticsearch_v7'
     #     client  = Elasticsearch::Client.new log: true
     #     payload = []
     #

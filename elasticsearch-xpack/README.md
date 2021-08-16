@@ -20,7 +20,7 @@ If you use the official [Ruby client for Elasticsearch](https://github.com/elast
 require the library in your code, and all the methods will be automatically available in the `xpack` namespace:
 
 ```ruby
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/xpack'
 
 client = Elasticsearch::Client.new url: 'http://elastic:changeme@localhost:9200'

@@ -1,6 +1,6 @@
 require 'pry-nav'
 require 'yaml'
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/xpack'
 require 'logger'
 require 'openssl'

@@ -2,7 +2,7 @@
 # ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-require "elasticsearch/api"
+require "elasticsearch_v7/api"
 require "elasticsearch/xpack/version"
 require "elasticsearch/xpack/api/actions/params_registry"
 

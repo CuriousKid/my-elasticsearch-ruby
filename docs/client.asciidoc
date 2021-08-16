@@ -61,7 +61,7 @@ gem 'elasticsearch', '~> 6.0'
 
 [source,ruby]
 ------------------------------------
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 client = Elasticsearch::Client.new log: true
 

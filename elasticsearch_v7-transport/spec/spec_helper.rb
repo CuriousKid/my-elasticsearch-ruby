@@ -1,13 +1,13 @@
-require 'elasticsearch'
-require 'elasticsearch-transport'
+require 'elasticsearch_v7'
+require 'elasticsearch_v7-transport'
 require 'logger'
 require 'ansi/code'
 require 'hashie/mash'
 require 'pry-nav'
 if defined?(JRUBY_VERSION)
-  require 'elasticsearch/transport/transport/http/manticore'
+  require 'elasticsearch_v7/transport/transport/http/manticore'
 else
-  require 'elasticsearch/transport/transport/http/curb'
+  require 'elasticsearch_v7/transport/transport/http/curb'
   require 'curb'
 end
 

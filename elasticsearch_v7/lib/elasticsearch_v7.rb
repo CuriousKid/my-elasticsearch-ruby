@@ -2,10 +2,10 @@
 # ElasticsearchV7 B.V licenses this file to you under the Apache 2.0 License.
 # See the LICENSE file in the project root for more information
 
-require "elasticsearch/version"
+require "elasticsearch_v7/version"
 
-require 'elasticsearch/transport'
-require 'elasticsearch/api'
+require 'elasticsearch_v7/transport'
+require 'elasticsearch_v7/api'
 
 module ElasticsearchV7
   module Transport

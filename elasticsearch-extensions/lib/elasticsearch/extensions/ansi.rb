@@ -11,7 +11,7 @@ require 'ansi/table'
 require 'ansi/terminal'
 
 require 'delegate'
-require 'elasticsearch/transport/transport/response'
+require 'elasticsearch_v7/transport/transport/response'
 
 require 'elasticsearch/extensions/ansi/helpers'
 require 'elasticsearch/extensions/ansi/actions'

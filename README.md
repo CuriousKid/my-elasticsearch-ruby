@@ -56,7 +56,7 @@ library is a wrapper for two separate libraries:
   which provides a Ruby API for the Elasticsearch RESTful API
 
 ```ruby
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 client = Elasticsearch::Client.new log: true
 

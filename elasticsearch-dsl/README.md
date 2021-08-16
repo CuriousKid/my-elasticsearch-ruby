@@ -43,7 +43,7 @@ end
 definition.to_hash
 # => { query: { match: { title: "test"} } }
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 client = Elasticsearch::Client.new trace: true
 
 client.search body: definition
@@ -119,7 +119,7 @@ repositories.url.allowed_urls: ["https://s3.amazonaws.com/data.elasticsearch.com
 ```ruby
 require 'awesome_print'
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/dsl'
 
 include Elasticsearch::DSL

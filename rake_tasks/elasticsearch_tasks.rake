@@ -11,7 +11,7 @@ namespace :elasticsearch do
 
   desc "Wait for elasticsearch cluster to be in green state"
   task :wait_for_green do
-    require 'elasticsearch'
+    require 'elasticsearch_v7'
 
     ready = nil
     5.times do |i|
@@ -152,7 +152,7 @@ namespace :elasticsearch do
 
   desc "Checkout the build hash from the running ElasticsearchV7 server"
   task :checkout_build do
-    require 'elasticsearch'
+    require 'elasticsearch_v7'
 
     branches = `git --git-dir=#{ELASTICSEARCH_PATH}/.git --work-tree=#{ELASTICSEARCH_PATH} branch --no-color`
     current_branch = branches.

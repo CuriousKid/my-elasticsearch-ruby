@@ -47,7 +47,7 @@ require 'mocha/minitest'
 require 'ansi/code'
 
 require 'require-prof' if ENV["REQUIRE_PROF"]
-require 'elasticsearch-transport'
+require 'elasticsearch_v7-transport'
 require 'logger'
 
 require 'hashie'

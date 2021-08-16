@@ -45,7 +45,7 @@ namespace :test do
 
   desc "Run integration tests"
   task integration: :update do
-    require 'elasticsearch'
+    require 'elasticsearch_v7'
 
     branches = `git --git-dir=#{__current__.join('../tmp/elasticsearch/.git')} --work-tree=#{__current__.join('../tmp/elasticsearch')} branch --no-color`
 

@@ -63,7 +63,7 @@ class ElasticsearchV7::Transport::ClientProfilingTest < ElasticsearchV7::Test::P
     context "with a single-node cluster and the Curb client" do
       setup do
         require 'curb'
-        require 'elasticsearch/transport/transport/http/curb'
+        require 'elasticsearch_v7/transport/transport/http/curb'
         @client = ElasticsearchV7::Client.new host: "localhost:#{@port}",
                                               transport_class: ElasticsearchV7::Transport::Transport::HTTP::Curb
       end

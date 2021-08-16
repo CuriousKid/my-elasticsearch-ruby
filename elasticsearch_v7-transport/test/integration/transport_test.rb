@@ -49,7 +49,7 @@ class ElasticsearchV7::Transport::ClientIntegrationTest < ElasticsearchV7::Test:
 
     should "use the Curb client" do
       require 'curb'
-      require 'elasticsearch/transport/transport/http/curb'
+      require 'elasticsearch_v7/transport/transport/http/curb'
 
       transport = ElasticsearchV7::Transport::Transport::HTTP::Curb.new \
         :hosts => [ { host: @host, port: @port } ] do |curl|
@@ -62,7 +62,7 @@ class ElasticsearchV7::Transport::ClientIntegrationTest < ElasticsearchV7::Test:
 
     should "deserialize JSON responses in the Curb client" do
       require 'curb'
-      require 'elasticsearch/transport/transport/http/curb'
+      require 'elasticsearch_v7/transport/transport/http/curb'
 
       transport = ElasticsearchV7::Transport::Transport::HTTP::Curb.new \
         :hosts => [ { host: @host, port: @port } ] do |curl|

@@ -13,7 +13,7 @@ module ElasticsearchV7
         #
         # @example HTTP
         #
-        #     require 'elasticsearch/transport/transport/http/manticore'
+        #     require 'elasticsearch_v7/transport/transport/http/manticore'
         #
         #     client = ElasticsearchV7::Client.new transport_class: ElasticsearchV7::Transport::Transport::HTTP::Manticore
         #
@@ -26,7 +26,7 @@ module ElasticsearchV7
         #  @example HTTPS (All SSL settings are optional,
         #                  see http://www.rubydoc.info/gems/manticore/Manticore/Client:initialize)
         #
-        #     require 'elasticsearch/transport/transport/http/manticore'
+        #     require 'elasticsearch_v7/transport/transport/http/manticore'
         #
         #     client = ElasticsearchV7::Client.new \
         #       url: 'https://elasticsearch.example.com',

@@ -13,7 +13,7 @@
 require 'multi_json'
 require 'oj'
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 require 'bunny'
 

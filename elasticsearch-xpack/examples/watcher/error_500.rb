@@ -26,7 +26,7 @@
 #     $ ruby -r sinatra -r json -e 'post("/") { json = JSON.parse(request.body.read); puts %Q~Received [#{json["watch_id"]}] with payload: #{json["payload"]}~ }'
 #
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/xpack'
 
 password = ENV.fetch('ELASTIC_PASSWORD', 'changeme')

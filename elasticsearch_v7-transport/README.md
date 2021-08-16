@@ -59,7 +59,7 @@ or install it from a source code checkout:
 In the simplest form, connect to Elasticsearch running on <http://localhost:9200>
 without any configuration:
 
-    require 'elasticsearch/transport'
+    require 'elasticsearch_v7/transport'
 
     client = Elasticsearch::Client.new
     response = client.perform_request 'GET', '_cluster/health'
@@ -376,7 +376,7 @@ Instead of passing the transport to the constructor, you can inject it at run ti
 You can also use a bundled [_Curb_](https://rubygems.org/gems/curb) based transport implementation:
 
     require 'curb'
-    require 'elasticsearch/transport/transport/http/curb'
+    require 'elasticsearch_v7/transport/transport/http/curb'
 
     client = Elasticsearch::Client.new transport_class: Elasticsearch::Transport::Transport::HTTP::Curb
 

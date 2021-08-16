@@ -63,7 +63,7 @@ This library is a wrapper for two separate libraries:
 Install the `elasticsearch` package and use the API directly:
 
 ```ruby
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 client = Elasticsearch::Client.new log: true
 

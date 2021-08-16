@@ -6,9 +6,9 @@ require 'pry-nav'
 require 'yaml'
 require 'jbuilder'
 require 'jsonify'
-require 'elasticsearch'
-require 'elasticsearch-transport'
-require 'elasticsearch-api'
+require 'elasticsearch_v7'
+require 'elasticsearch_v7-transport'
+require 'elasticsearch_v7-api'
 
 require 'ansi'
 tracer = ::Logger.new(STDERR)

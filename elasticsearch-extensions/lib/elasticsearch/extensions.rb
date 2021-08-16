@@ -4,7 +4,7 @@
 
 # encoding: utf-8
 
-require 'elasticsearch'
+require 'elasticsearch_v7'
 require 'elasticsearch/extensions/version'
 
 module ElasticsearchV7

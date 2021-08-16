@@ -65,7 +65,7 @@ When the extension is loaded together with the
 [Ruby client for Elasticsearch](../elasticsearch/README.md),
 a `reindex` method is added to the client:
 
-    require 'elasticsearch'
+    require 'elasticsearch_v7'
     require 'elasticsearch/extensions/reindex'
 
     client = Elasticsearch::Client.new
@@ -88,7 +88,7 @@ method.
 
 You can also use the `Reindex` class directly:
 
-    require 'elasticsearch'
+    require 'elasticsearch_v7'
     require 'elasticsearch/extensions/reindex'
 
     client = Elasticsearch::Client.new

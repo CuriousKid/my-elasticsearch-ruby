@@ -11,7 +11,7 @@
 # * https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html
 
 require 'ansi'
-require 'elasticsearch'
+require 'elasticsearch_v7'
 
 client = ElasticsearchV7::Client.new log: true
 client.transport.logger.formatter = proc do |severity, datetime, progname, msg| "\e[2m#{msg}\e[0m\n" end
