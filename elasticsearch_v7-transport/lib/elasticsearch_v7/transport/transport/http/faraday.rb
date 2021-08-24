@@ -23,7 +23,6 @@ module ElasticsearchV7
           def perform_request(method, path, params={}, body=nil, headers=nil, opts={})
             super do |connection, url|
               headers = headers || connection.connection.headers
-              byebug
               response = connection.connection.run_request(method.downcase.to_sym,
                                                            url,
                                                            ( body ? __convert_to_json(body) : nil ),

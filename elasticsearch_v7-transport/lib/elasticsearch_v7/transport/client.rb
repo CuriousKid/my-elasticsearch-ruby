@@ -12,7 +12,6 @@ module ElasticsearchV7
     # See {file:README.md README} for usage and code examples.
     #
     class Client
-      byebug
       DEFAULT_TRANSPORT_CLASS  = Transport::HTTP::Faraday
 
       DEFAULT_LOGGER = lambda do
@@ -103,7 +102,6 @@ module ElasticsearchV7
       # @yield [faraday] Access and configure the `Faraday::Connection` instance directly with a block
       #
       def initialize(arguments={}, &block)
-        byebug
         @options = arguments.each_with_object({}){ |(k,v), args| args[k.to_sym] = v }
         @arguments = @options
         @arguments[:logger] ||= @arguments[:log]   ? DEFAULT_LOGGER.call() : nil

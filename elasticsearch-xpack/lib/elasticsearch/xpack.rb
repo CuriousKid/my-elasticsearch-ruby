@@ -20,7 +20,6 @@ module ElasticsearchV7
       end
 
       class Client
-        byebug
         include ElasticsearchV7::API::Common::Client, ElasticsearchV7::API::Common::Client::Base
         include ElasticsearchV7::XPack::API
       end
@@ -33,7 +32,6 @@ ElasticsearchV7::API::COMMON_PARAMS.push :job_id, :datafeed_id, :filter_id, :sna
 module ElasticsearchV7
   module Transport
     class Client
-      byebug
       def xpack
         @xpack_client ||= ElasticsearchV7::XPack::API::Client.new(self)
       end

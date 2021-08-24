@@ -10,7 +10,6 @@ require 'elasticsearch_v7/api'
 module ElasticsearchV7
   module Transport
     class Client
-      byebug
       include ElasticsearchV7::API
     end
   end
